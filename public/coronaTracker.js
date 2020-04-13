@@ -2,6 +2,9 @@ let stats = "https://pomber.github.io/covid19/timeseries.json";
 let countryList = "https://raw.githubusercontent.com/pomber/covid19/master/docs/countries.json";
 let countries;
 let results;
+let worldResults = [];
+
+
 let coronaTrackerArea = document.querySelector(".coronaTracker");
 let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
@@ -17,10 +20,11 @@ async function getCoronaData(stats){
         response = await fetch(countryList);
         countries = await response.json();
 
-        console.log(results);
-        console.log(countries);
+        //console.log(results);
+        //console.log(countries);
 
-        arrangeData(results, userSelection);
+        arrangeData(results);
+        getWorldData(results, userSelection);
         drawTable(results, userSelection);
 
     } catch(error) {
@@ -43,11 +47,51 @@ let cMapRegion = coronaTrackerArea.querySelector(".coronaMapRegion");
 
 //ARRANGE DATA NEW TO OLD
 
-function arrangeData(results, userSelection){
-    results[userSelection].reverse();
+function arrangeData(results){
+    for (let tempCountry in results) 
+        results[tempCountry].reverse();
+
+    console.log(results);
 }
 
 //END ARRANGE DATA NEW TO OLD
+
+
+//GET REGION DATA
+function getWorldData(results){
+    let total;
+    let regionTotalConfirmed = 0;
+    let regionTotalDeaths = 0;
+    let regionTotalRecovered = 0;
+
+    //Needed a random country to test the end of the array length.
+    for(let day = 0; day < results['Trinidad and Tobago'].length; day++){
+
+        regionTotalConfirmed = 0;
+        regionTotalDeaths = 0;
+        regionTotalRecovered = 0;
+
+        for (let region in results){
+            regionTotalConfirmed += results[region][day].confirmed;
+            regionTotalDeaths += results[region][day].deaths;
+            regionTotalRecovered += results[region][day].recovered;
+        }
+
+        let statsObject = {
+            date : results['Trinidad and Tobago'][day].date,
+            confirmed : regionTotalConfirmed,
+            deaths : regionTotalDeaths,
+            recovered : regionTotalRecovered
+        }
+
+        worldResults.push(statsObject);
+    }
+
+    console.log(worldResults);
+}
+
+
+//END GET REGION DATA
 
 //DRAW TABLE
 function drawTable(results, userSelection){
@@ -58,22 +102,42 @@ function drawTable(results, userSelection){
     console.log(`Recovered: ${results[userSelection][0].recovered}`);
 
     cTableElement.innerHTML = '<p>The results of the query are shown below!</p>';
-        cTableElement.innerHTML +=
+    cTableElement.innerHTML +=
+    `
+    <h2>${userSelection}</h2>
+    <hr style="border: 2px solid black;">
+    <table id="coronaTableHeader">
+        <tr>
+            <td><b>Date</b></td>
+            <td><b>Confirmed</b></td>
+            <td><b>Recovered</b></td>
+            <td><b>Deaths</b></td>
+            <td><b>Increase</b></td>
+        </tr>
+    </table>
+    <hr style="border: 2px solid black;">
+    `;
+
+    selectedCountry = results[userSelection];
+
+    for(let day of selectedCountry){
+        //<td>${displayDate}</td>
+        
+        cTableElement.innerHTML += 
         `
-        <h2>${userSelection}</h2>
-        <hr style="border: 2px solid black;">
-        <table id="coronaResultHeader">
+        <table>
             <tr>
-                <td><b>Date</b></td>
-                <td><b>Confirmed</b></td>
-                <td><b>Recovered</b></td>
-                <td><b>Deaths</b></td>
-                <td><b>Increase</b></td>
+                <td>${day.confirmed}</td>
+                <td>${day.recovered}</td>
+                <td>${day.deaths}</td>
+                <td>${day.confirmed - day.confirmed}</td>
             </tr>
         </table>
-        <hr style="border: 2px solid black;">
-        `;
+        <hr>
+        `
 
+        let previousDay = day;
+    }
 }
 
 
