@@ -3,7 +3,15 @@ let countryList = "https://raw.githubusercontent.com/pomber/covid19/master/docs/
 let countries;
 let results;
 let selectedCountry;
-let formattedData;
+let formattedData = {
+    date: [],
+    confirmed: [],
+    deaths: [],
+    recovered: [],
+    piechart: [],
+    heatmap: [["Country","Infected"]]
+};
+
 let worldResults = [];
 
 
@@ -27,7 +35,7 @@ async function getCoronaData(stats){
 
         arrangeData(results);
         getWorldData(results, userSelection);
-        formatData(results);
+        formatData(results, countries, userSelection);
         drawTable(results, userSelection);
 
     } catch(error) {
@@ -53,8 +61,6 @@ let cMapRegion = coronaTrackerArea.querySelector(".coronaMapRegion");
 function arrangeData(results){
     for (let tempCountry in results) 
         results[tempCountry].reverse();
-
-    console.log(results);
 }
 
 //END ARRANGE DATA NEW TO OLD
@@ -89,8 +95,6 @@ function getWorldData(results){
 
         worldResults.push(statsObject);
     }
-
-    console.log(worldResults);
 }
 
 
@@ -122,8 +126,6 @@ function drawTable(results, userSelection){
     `;
 
     selectedCountry = results[userSelection];
-
-    console.log(selectedCountry);
 
     let previousDay = 0;
 
@@ -157,10 +159,7 @@ function drawTable(results, userSelection){
 
 
 
-function formatData(results, selectedCountry){
-
-    console.log(selectedCountry);
-
+function formatData(results, countries, selectedCountry){
     for(let item in formattedData){
         formattedData['date'].pop();
         formattedData['deaths'].pop();
@@ -169,17 +168,39 @@ function formatData(results, selectedCountry){
         formattedData['piechart'].pop();
     }
 
-    for(let item in results){
-        console.log(selectedCountry[item].deaths);
+    for(let item in results[selectedCountry]){
+        let formattedDate = Date.parse(results[selectedCountry][item].date);
+        formattedDate = new Intl.DateTimeFormat("en-TT", globalDateFormat).format(formattedDate);
 
-
-        formattedData['date'].push();
-        formattedData['deaths'].push(selectedCountry[item].deaths);
-        formattedData['confirmed'].push();
-        formattedData['recovered'].push();
-        formattedData['piechart'].push();
-
+        formattedData['date'].push(formattedDate);
+        formattedData['deaths'].push(results[selectedCountry][item].deaths);
+        formattedData['confirmed'].push(results[selectedCountry][item].confirmed);
+        formattedData['recovered'].push(results[selectedCountry][item].recovered);
+        
     }
+
+    let confirmedCases;
+    let confirmedCountryCode;
+    for (let currentCountry in countries){
+        try {
+            confirmedCases = parseInt(results[currentCountry][0].confirmed);
+            confirmedCountryCode = countries[currentCountry].code;
+        } catch(error) {
+            console.log(error);
+        }
+
+        console.log(confirmedCases);
+        console.log(confirmedCountryCode);
+
+        //writeCountryData(currentCountry, confirmedCases, confirmedCountryCode);
+    }
+
+
+
+
+    formattedData['piechart'].push(formattedData['confirmed'][0]);
+    formattedData['piechart'].push(formattedData['deaths'][0]);
+    formattedData['piechart'].push(formattedData['recovered'][0]);
 
 
 
@@ -195,8 +216,6 @@ function formatData(results, selectedCountry){
 
 //CORONA LINE GRAPH
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
-
-console.log(coronaGraphContext);
 //coronaGraphContext.canvas.width = document.documentElement.clientWidth;
 //coronaGraphContext.canvas.height = document.documentElement.clientHeight;
 let coronaGraph = new Chart(coronaGraphContext, {
