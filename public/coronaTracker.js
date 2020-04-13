@@ -162,19 +162,19 @@ let coronaGraph = new Chart(coronaGraphContext, {
         datasets: [{
             label: 'Confirmed Cases',
             data: [2,5,7,8],
-            borderColor: 'rgba(255, 0, 0, 1)',
+            borderColor:'#19AADE',
             fill: false,
             lineTension: 0
         },{
             label: 'Recovered',
             data: [2,4,1,3],
-            borderColor: 'rgba(0, 150, 0, 1)',
+            borderColor: '#7D3AC1',
             fill: false,
             lineTension: 0
         },{
             label: 'Deaths',
             data: [21,3,5,2],
-            borderColor: 'rgba(0, 0, 255, 1)',
+            borderColor: '#820401',
             fill: false,
             lineTension: 0
         }
@@ -191,12 +191,26 @@ let coronaGraph = new Chart(coronaGraphContext, {
         title: {
             display: true,
             text: "Corona Virus Statistical Line Graph",
-            fontSize: 24
+            fontSize: 24,
+            fontColor: "#66FCF1",
+            fontFamily:"'Share Tech Mono', monospace"
+        },
+        legend: {
+            labels: {
+                fontColor: "#FFFFFF",
+                fontFamily:"'Share Tech Mono', monospace",
+            },
         },
         scales: {
             yAxes: [{
-                position: "right",
+                position: "left",
                 type: "linear",
+                gridLines: {
+                    color: "#C5C6C7",
+                },
+                scaleLabel:{
+                    fontColor:"#C5C6C7",
+                },
                 ticks: {
                     beginAtZero: false,
                     min: 0
@@ -204,6 +218,12 @@ let coronaGraph = new Chart(coronaGraphContext, {
             }],
             xAxes: [{
                 position: "bottom",
+                gridLines: {
+                    color: "#C5C6C7",
+                },
+                scaleLabel:{
+                    fontColor:"#C5C6C7",
+                },
                 ticks: {
                     reverse: true
                 }
