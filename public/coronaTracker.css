@@ -14,14 +14,15 @@
 
 .coronaTableCountry td{
     line-height:2.5;
+    width:90vw;
+    justify-content:space-evenly;
 }
 
-#coronaResultHeader {
+#coronaTableHeader tr{
+    width:90vw;
     display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:space-evenly;
-}
+    justify-content:space-evenly;
+} 
 
 .coronaTableCountry {
     color:white;
