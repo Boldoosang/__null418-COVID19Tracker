@@ -122,11 +122,12 @@ function drawTable(results, userSelection){
 
     for(let day of selectedCountry){
         //<td>${displayDate}</td>
-        
+
         cTableElement.innerHTML += 
         `
         <table>
             <tr>
+                <td>${day.date}</td>
                 <td>${day.confirmed}</td>
                 <td>${day.recovered}</td>
                 <td>${day.deaths}</td>
