@@ -13,12 +13,20 @@
 }
 
 .coronaTableCountry td{
-    line-height:2.5;
+    line-height:3;
     width:100vw;
+    justify-content:space-evenly;
+}
+
+#coronaTableHeader{
+    justify-content:space-evenly;
+}
+
+#coronaDataTable{
     justify-content:space-evenly;
 }
 
 .coronaTableCountry {
     color:white;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Share Tech Mono', monospace;
 }
