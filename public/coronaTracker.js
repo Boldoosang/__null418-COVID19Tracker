@@ -6,7 +6,7 @@ let worldResults = [];
 
 
 let coronaTrackerArea = document.querySelector(".coronaTracker");
-let globalDateFormat = {weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'};
+let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
 //TESTING
 let userSelection = "Trinidad and Tobago";
