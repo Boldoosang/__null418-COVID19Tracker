@@ -6,7 +6,7 @@ let worldResults = [];
 
 
 let coronaTrackerArea = document.querySelector(".coronaTracker");
-let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
+let globalDateFormat = {weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'};
 
 //TESTING
 let userSelection = "Trinidad and Tobago";
@@ -119,25 +119,31 @@ function drawTable(results, userSelection){
     `;
 
     selectedCountry = results[userSelection];
+    let previousDay = 0;
 
-    for(let day of selectedCountry){
-        //<td>${displayDate}</td>
+    for(let day = 0; day < selectedCountry.length; day++){
+        let dataDate = Date.parse(selectedCountry[day].date);
+        let resultDate = new Date(dataDate);
+
+        let displayDate = Intl.DateTimeFormat("en-TT", globalDateFormat).format(resultDate);
+
+        previousDay = {...selectedCountry[day+1]}
+
+        console.log(previousDay.confirmed);
 
         cTableElement.innerHTML += 
         `
-        <table>
+        <table id="coronaDataTable">
             <tr>
-                <td>${day.date}</td>
-                <td>${day.confirmed}</td>
-                <td>${day.recovered}</td>
-                <td>${day.deaths}</td>
-                <td>${day.confirmed - day.confirmed}</td>
+                <td>${displayDate}</td>
+                <td>${selectedCountry[day].confirmed}</td>
+                <td>${selectedCountry[day].recovered}</td>
+                <td>${selectedCountry[day].deaths}</td>
+                <td>${selectedCountry[day].confirmed - previousDay.confirmed}</td>
             </tr>
         </table>
         <hr>
         `
-
-        let previousDay = day;
     }
 }
 
