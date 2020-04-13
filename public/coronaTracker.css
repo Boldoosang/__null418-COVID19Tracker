@@ -8,6 +8,11 @@
     text-align:center;
 }
 
-#coronaResultHeader{
-    column-span:all;
+.coronaTableCountry p{
+    text-align:center;
+}
+
+.coronaTableCountry td{
+    column-count: 5;
+    column-rule-style:center;
 }
