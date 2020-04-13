@@ -6,10 +6,15 @@
 
 .coronaTableCountry h2{
     text-align:center;
+    text-transform: uppercase;
+    line-height:2.5;
+    color:#66FCF1;
+    font-weight:600;
 }
 
 .coronaTableCountry p{
     text-align:center;
+    margin-top:10px;
 }
 
 .coronaTableCountry td{
