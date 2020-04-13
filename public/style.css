@@ -4,6 +4,19 @@
 }
 
 body {
+    background-color: #1f2833;
     font-family: 'Roboto', sans-serif;
 
+}
+
+.nav-wrapper{
+    background-color: #0b0c10;
+}
+
+.material-icons{
+    color: #66fcf1;
+    font-size:30px;
+}
+.card{
+    background-color: #0b0c10;
 }
