@@ -13,15 +13,23 @@
 <body>
     <div class="coronaTracker">
 
-        <div class="coronaPieChart"></div>
+        <div class="coronaGraph">
+            <canvas id="coronaLineGraph"></canvas>
+        </div>
 
-        <div class="coronaMapWorld"></div>
+        <div class="coronaChart">
+            <canvas id="coronaPieChart"></canvas>
+        </div>
 
+    
         <div class="coronaMapRegion"></div>
 
         <div class="coronaTableCountry"></div>
 
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="coronaTracker.js"></script>
 </body>
 </html>
