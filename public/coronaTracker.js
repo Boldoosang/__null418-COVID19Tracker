@@ -106,7 +106,7 @@ function drawTable(results, userSelection){
     `
     <h2>${userSelection}</h2>
     <hr style="border: 2px solid black;">
-    <table id="coronaTableHeader">
+    <table class="responsive-table" id="coronaTableHeader">
         <tr>
             <td><b>Date</b></td>
             <td><b>Confirmed</b></td>
@@ -133,7 +133,7 @@ function drawTable(results, userSelection){
 
         cTableElement.innerHTML += 
         `
-        <table id="coronaDataTable">
+        <table class="responsive-table" id="coronaDataTable">
             <tr>
                 <td>${displayDate}</td>
                 <td>${selectedCountry[day].confirmed}</td>
