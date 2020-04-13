@@ -147,6 +147,69 @@ function drawTable(results, userSelection){
     }
 }
 
-
-
 //END DRAW TABLE
+
+//CORONA LINE GRAPH
+let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
+
+console.log(coronaGraphContext);
+//coronaGraphContext.canvas.width = document.documentElement.clientWidth;
+//coronaGraphContext.canvas.height = document.documentElement.clientHeight;
+let coronaGraph = new Chart(coronaGraphContext, {
+    type: 'line',
+    data: {
+        labels: [1,2,3,4,5],
+        datasets: [{
+            label: 'Confirmed Cases',
+            data: [2,5,7,8],
+            borderColor: 'rgba(255, 0, 0, 1)',
+            fill: false,
+            lineTension: 0
+        },{
+            label: 'Recovered',
+            data: [2,4,1,3],
+            borderColor: 'rgba(0, 150, 0, 1)',
+            fill: false,
+            lineTension: 0
+        },{
+            label: 'Deaths',
+            data: [21,3,5,2],
+            borderColor: 'rgba(0, 0, 255, 1)',
+            fill: false,
+            lineTension: 0
+        }
+    ]},
+    options: {
+        layout: {
+            padding: {
+                left: 50,
+                right: 10,
+                top: 0,
+                bottom: 0
+            }
+        },
+        title: {
+            display: true,
+            text: "Corona Virus Statistical Line Graph",
+            fontSize: 24
+        },
+        scales: {
+            yAxes: [{
+                position: "right",
+                type: "linear",
+                ticks: {
+                    beginAtZero: false,
+                    min: 0
+                }
+            }],
+            xAxes: [{
+                position: "bottom",
+                ticks: {
+                    reverse: true
+                }
+            }]
+        }
+    }
+});
+//END CORONA LINE GRAPH
+
