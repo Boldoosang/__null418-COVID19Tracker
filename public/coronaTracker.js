@@ -237,7 +237,7 @@ let coronaGraph = new Chart(coronaGraphContext, {
         },{
             label: 'Deaths',
             data: [21,3,5,2],
-            borderColor: '#820401',
+            borderColor: '#C02323',
             fill: false,
             lineTension: 0
         }
@@ -253,8 +253,8 @@ let coronaGraph = new Chart(coronaGraphContext, {
         },
         title: {
             display: true,
-            text: "Corona Virus Statistical Line Graph",
-            fontSize: 24,
+            text: "CORONA VIRUS STATISTICAL LINE GRAPH",
+            fontSize: 36,
             fontColor: "#66FCF1",
             fontFamily:"'Share Tech Mono', monospace"
         },
