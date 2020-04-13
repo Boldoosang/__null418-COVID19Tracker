@@ -40,6 +40,12 @@ main{
     background-color: #0b0c10;
 }
 
+#sidecard{
+    background-color: #c5c6c7;
+}
+.sidenav{
+    background-color:#0b0c10;
+}
 .dropbtn {
     background: black;
     padding: 16px;

@@ -22,12 +22,16 @@
       
     <div class="card">
         <div class="card-content">
-            <ul id="slide-out" class="sidenav">
-                <div class="card">
-                  <div class="card-content">ASDASD</div>
-                </div>
+            <ul id="menu" class="sidenav">
+                <li>
+                    <div id="sidecard" class="card">
+                        <div class="card-content">
+                            <a href="coronatracker.html" class="btn">Trinidad</a>
+                        </div>
+                    </div>
+                </li>
             </ul>
-            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <a href="#" data-target="menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
 
             <div class="right">
@@ -38,21 +42,15 @@
     </div>
 </header>
   
-  <main class="card">
-      <div class=card-content>
-        <div class="row">
-            <div class="col s12">
-    
-             </div>
-        </div>
-      </div>
-  </main>
+    <section id="content">
+    </section>
+
   
 <footer class="page-footer">
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h5 class="center white-text"></h5>
+                <h5 class="white-text">FOOTER</h5>
             </div>
         </div>
     </div>
@@ -63,6 +61,54 @@
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {});
   });
+  function executeScripts(){
+  let script = document.querySelector('script').innerText;
+  try{
+    eval(script);
+  }catch(e){
+    console.error(e);
+  }   
+}
+
+
+async function navigate(title, url){
+  document.title = title;
+  let content = document.querySelector('#content');
+  if(url === null){
+    content.innerHTML = "";
+  }else{
+    let response = await fetch(url);//fetch the page eg battery.html
+    content.innerHTML = await response.text();
+    executeScripts();
+  }
+}
+
+//event handler
+function handleClick(event){
+  event.preventDefault();
+  event.stopPropagation();
+  let a = event.target;//get the anchor tag element
+  let text = a.text;//get text content of the anchor element
+  let url = a.href;//get the url of the anchor element
+  history.pushState({title:text, url: url}, null, a.href);//pass the url and text to the history
+  navigate(a.text, a.href);//then navigate to page
+}
+
+const menu = document.querySelector('#menu');
+menu.addEventListener('click', handleClick, false);
+
+function handleBack(event){
+  //if no links were clicked pushState() is never called
+  //as pushState() is never called there will be no data in event.state
+  if(event.state == null){
+    navigate('Web APIs', null);
+  }else{
+    //links were clicked before so we can get the text and url passed from handleClick()
+    navigate(event.state.title, event.state.url);  
+  }
+}
+
+window.addEventListener('popstate', handleBack);//attach event handler to back navigation
 </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
