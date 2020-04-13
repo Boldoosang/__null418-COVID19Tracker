@@ -8,53 +8,61 @@
     <!-- Compiled and minified CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
-  <div class="container">
-    <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo center">Logo</a>
-        </div>
-      </nav>
-  </div>
-  
-  <div class="card">
-      <div class="card-content">
-        <div class="dropdown">
-            <button onclick="Menu()" class="material-icons">menu</button>
-            <div id="dropDown" class="dropdown-content">
-                <aHome>
-                    Countries
-                </aHome>
+<header>
+    <div class="container">
+        <nav>
+            <div class="nav-wrapper">
+              <a href="#!" class="brand-logo center">Logo</a>
             </div>
+          </nav>
+    </div>
+      
+    <div class="card">
+        <div class="card-content">
+            <ul id="slide-out" class="sidenav">
+                <div class="card">
+                  <div class="card-content">ASDASD</div>
+                </div>
+            </ul>
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+
+            <div class="right">
+                <a href="coronatracker.html">COROOONA</a>
+            </div>
+
+        </div>
+    </div>
+</header>
+  
+  <main class="card">
+      <div class=card-content>
+        <div class="row">
+            <div class="col s12">
+    
+             </div>
+        </div>
       </div>
+  </main>
+  
+<footer class="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h5 class="center white-text"></h5>
+            </div>
+        </div>
+    </div>
+</footer>
 
-      <div class="right">
-        <a href="coronatracker.html">COROOONA</a>
-
-      </div>
-  </div>
-
-  <script>
-    function Menu(){
-        document.getElementById("dropDown").classList.toggle("show");
-    }
-
-    window.onclick = function(event){
-        if(!event.target.matches('.dropbtn')){
-            var dropdowns = document.getElemtnsByClassName("dropdown-content");
-            var i;
-            for(i=0; i < dropdowns.length; i++){
-                var openDropdown = dropdowns[i];
-                if(openDropdown.classList.contains('show')){
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {});
+  });
 </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -70,7 +78,6 @@
 
     <script src="/__/firebase/init.js"></script>
 
-    <!-- Compiled and minified Materialize JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="materialize.min.js"></script>
 </body>
 </html>
