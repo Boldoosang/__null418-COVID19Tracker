@@ -12,9 +12,13 @@
     text-align:center;
 }
 
+.coronaTableCountry td{
+    line-height:2.5;
+}
+
 #coronaResultHeader {
     display:flex;
     flex-direction:row;
-    justify-content:space-evenly;
+    justify-content:center;
     align-items:space-evenly;
 }
