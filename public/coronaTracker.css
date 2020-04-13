@@ -22,13 +22,12 @@
 
 
 .coronaTableCountry #coronaTableHeader{
-    background-color: red;
+    background-color:#0B0C10;
 }
 
 .coronaTableCountry {
     color:white;
-
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family:'Share Tech Mono', monospace;
 }
 
 .coronaTableCountry #coronaTableHeader{
