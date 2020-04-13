@@ -3,3 +3,26 @@
     padding: 0;
     margin: 0;
 }
+
+.coronaTableCountry h2{
+    text-align:center;
+}
+
+.coronaTableCountry p{
+    text-align:center;
+}
+
+.coronaTableCountry td{
+    line-height:2.5;
+}
+
+#coronaResultHeader {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:space-evenly;
+}
+
+.coronaTableCountry {
+    color:white;
+}
