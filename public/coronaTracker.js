@@ -2,6 +2,8 @@ let stats = "https://pomber.github.io/covid19/timeseries.json";
 let countryList = "https://raw.githubusercontent.com/pomber/covid19/master/docs/countries.json";
 let countries;
 let results;
+let selectedCountry;
+let formattedData;
 let worldResults = [];
 
 
@@ -25,6 +27,7 @@ async function getCoronaData(stats){
 
         arrangeData(results);
         getWorldData(results, userSelection);
+        formatData(results);
         drawTable(results, userSelection);
 
     } catch(error) {
@@ -119,6 +122,9 @@ function drawTable(results, userSelection){
     `;
 
     selectedCountry = results[userSelection];
+
+    console.log(selectedCountry);
+
     let previousDay = 0;
 
     for(let day = 0; day < selectedCountry.length; day++){
@@ -128,8 +134,6 @@ function drawTable(results, userSelection){
         let displayDate = Intl.DateTimeFormat("en-TT", globalDateFormat).format(resultDate);
 
         previousDay = {...selectedCountry[day+1]}
-
-        console.log(previousDay.confirmed);
 
         cTableElement.innerHTML += 
         `
@@ -148,6 +152,46 @@ function drawTable(results, userSelection){
 }
 
 //END DRAW TABLE
+
+//FORMAT DATA FOR GRAPH
+
+
+
+function formatData(results, selectedCountry){
+
+    console.log(selectedCountry);
+
+    for(let item in formattedData){
+        formattedData['date'].pop();
+        formattedData['deaths'].pop();
+        formattedData['confirmed'].pop();
+        formattedData['recovered'].pop();
+        formattedData['piechart'].pop();
+    }
+
+    for(let item in results){
+        console.log(selectedCountry[item].deaths);
+
+
+        formattedData['date'].push();
+        formattedData['deaths'].push(selectedCountry[item].deaths);
+        formattedData['confirmed'].push();
+        formattedData['recovered'].push();
+        formattedData['piechart'].push();
+
+    }
+
+
+
+    console.log(formattedData);
+
+
+
+}
+
+//END FORMAT DATA FOR GRAPH
+
+
 
 //CORONA LINE GRAPH
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
