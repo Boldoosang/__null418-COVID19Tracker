@@ -105,7 +105,7 @@ function drawTable(results, userSelection){
     cTableElement.innerHTML +=
     `
     <h2>${userSelection}</h2>
-    <hr style="border: 2px solid black;">
+    <hr style="border: 2px solid white;">
     <table class="centered" id="coronaTableHeader">
         <tr>
             <td><b>Date</b></td>
@@ -115,7 +115,7 @@ function drawTable(results, userSelection){
             <td><b>Increase</b></td>
         </tr>
     </table>
-    <hr style="border: 2px solid black;">
+    <hr style="border: 2px solid white;">
     `;
 
     selectedCountry = results[userSelection];
