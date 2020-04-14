@@ -221,13 +221,13 @@ let coronaGraph = new Chart(coronaGraphContext, {
         datasets: [{
             label: 'Confirmed Cases',
             data: formattedData.confirmed,
-            borderColor:'#19AADE',
+            borderColor:'#EABD3B',
             fill: false,
             lineTension: 0
         },{
             label: 'Recovered',
             data: formattedData.recovered,
-            borderColor: '#7D3AC1',
+            borderColor: '#00CC00',
             fill: false,
             lineTension: 0
         },{
@@ -302,9 +302,9 @@ let coronaPie = new Chart(coronaPieContext, {
     data: {
         datasets: [{
             data: formattedData.piechart,
-            backgroundColor : ['rgba(0, 0, 200, 1)','rgba(150, 0, 0, 1)','rgba(0, 150, 0, 1)']
+            backgroundColor : ['#EABD3B','#C02323','#00CC00']
         }],
-        labels : ["Confirmed Cases", "Deaths", "Recovered"]
+        labels: ["Confirmed Cases", "Deaths", "Recovered"],
     },
     options: {
         layout: {
@@ -315,10 +315,18 @@ let coronaPie = new Chart(coronaPieContext, {
                 bottom: 25
             }
         },
+        legend: {
+            labels: {
+                fontColor: "#FFFFFF",
+                fontFamily:"'Share Tech Mono', monospace",
+            },
+        },
         title: {
             display: true,
             text: "Corona Virus Statistical Pie Chart",
-            fontSize: 24
+            fontSize: 36,
+            fontColor: "#66FCF1",
+            fontFamily:"'Share Tech Mono', monospace"
         }
     }
 });
