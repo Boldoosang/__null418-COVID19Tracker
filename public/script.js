@@ -9,7 +9,6 @@
     var instances = M.Dropdown.init(elems, {});
   });
 
-  
   async function navigate(title, url){
     document.title = title;
     let content = document.querySelector('#content');
@@ -31,6 +30,17 @@
     navigate(a, "coronaTracker.html");
   }
   
-  const menu = document.querySelector('#dropdownNav');
+  function handleClick1(event){
+    event.preventDefault();
+    event.stopPropagation();
+    
+    let a = event.target.innerText;
+
+    navigate(a, "homepage.html");
+  }
+
+  const menu = document.querySelector('#dropdown1');
   menu.addEventListener('click', handleClick, false);
   
+  const menu1 = document.querySelector('#homeButt');
+  menu1.addEventListener('click', handleClick1, false); 
