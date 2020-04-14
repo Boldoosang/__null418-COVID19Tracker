@@ -21,7 +21,7 @@ let coronaTrackerArea = document.querySelector(".coronaTracker");
 let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
 //TESTING
-let userSelection = "Trinidad and Tobago";
+let userSelection = "US";
 
 //GET CORONA RESULTS AND CORONA COUNTRIES
 async function getCoronaData(stats, userSelection){
@@ -42,8 +42,9 @@ async function getCoronaData(stats, userSelection){
         formatData(results, countries, userSelection);
         coronaGraph.update();
         coronaPie.update();
+        
     } catch(error) {
-        coronaTrackerArea.innerHTML = `<p style="text-align: center;"><b>No results found!</b></p>`
+        coronaTrackerArea.innerHTML = `<p style="text-align: center; color: white;"><b>No results found!</b></p>`
         console.log(error);
     }
 }
@@ -221,6 +222,7 @@ function writeCountryData(currentCountry, n, cCode){
     } catch(error) {
         console.log(error);
     }
+
 }
 //END WRITE COUNTRY DATA TO ARRAY
 
@@ -352,7 +354,6 @@ let coronaPie = new Chart(coronaPieContext, {
 function updateGraph(){
     coronaPie.update();
     coronaGraph.update();
-    drawWorldMap();
     drawRegionsMap();
 }
 
@@ -361,32 +362,8 @@ function updateGraph(){
 google.charts.load('current', {'packages':['geochart']});
 google.charts.setOnLoadCallback(drawRegionsMap);
 
-
-
-//DRAWS WORLD MAP
-// function drawWorldMap() {
-//     console.log(formattedData.heatmap);
-//     let data = formattedData.heatmap;
-
-//     data = google.visualization.arrayToDataTable(data);
-
-//     let options = {
-//         region: "world",
-//         displayMode: "region"
-//     };
-
-//     let chart = new google.visualization.GeoChart(document.querySelector('.coronaMapRegion'));
-
-//     chart.draw(data, options);
-//     document.querySelector('.coronaMapRegion').style.border = "2px solid black";
-//     document.querySelector('.coronaMapRegion').style.height = "80vh";
-// }
-
-//END DRAW WORLD MAP
-
 //DRAW WORLD REGION MAP
 function drawRegionsMap() {
-    console.log(formattedData.heatmap);
     let data = formattedData.heatmap;
 
     data = google.visualization.arrayToDataTable(data);
@@ -402,5 +379,6 @@ function drawRegionsMap() {
     document.querySelector('.coronaMapRegion').style.border = "2px solid black";
     document.querySelector('.coronaMapRegion').style.height = "80vh";
 }
-
 //END DRAW WORLD REGION MAP
+
+window.addEventListener("resize", drawRegionsMap);
