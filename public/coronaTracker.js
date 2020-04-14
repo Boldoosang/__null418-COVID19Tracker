@@ -23,7 +23,7 @@ let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 let userSelection = "Trinidad and Tobago";
 
 //GET CORONA RESULTS AND CORONA COUNTRIES
-async function getCoronaData(stats){
+async function getCoronaData(stats, userSelection){
     try {
         let response = await fetch(stats);
         results = await response.json();
@@ -47,8 +47,7 @@ async function getCoronaData(stats){
 }
 
 //NEEDS TO BE TRIGGERED BY SOMETHING
-document.addEventListener("load",getCoronaData(stats));
-
+document.addEventListener("load", console.log("loaded"));
 //END GET CORONA RESULTS AND CORONA COUNTRIES
 
 //CORONA RESULT ELEMENTS
@@ -164,9 +163,6 @@ function drawTable(results, userSelection){
 //END DRAW TABLE
 
 //FORMAT DATA FOR GRAPH
-
-
-
 function formatData(results, countries, selectedCountry){
     for(let item in formattedData){
         formattedData['date'].pop();

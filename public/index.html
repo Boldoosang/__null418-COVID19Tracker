@@ -21,17 +21,20 @@
       </div>
       
       <div class="nav-wrapper black">
-        <div class="card">
+        <div class="card black">
           <div class="container">
             <div class="card-content">
               <ul id="menu" class="sidenav">
+                <li class="navLogo">
+                  <img src="covid.png" style="padding: 30px;" class="circle responsive-img">
+                </li>
                 <li>
                   <a><b>HOME</b></a>
                 </li>
                 <li>
                   <a><b>COUNTRIES</b><i class="material-icons white black-text right">arrow_drop_down</i></a>
                     <ul id="dropdownNav">
-                      <li class="btn grey" onclick="loadPage()"><b>Trinidad and Tobago</b></li>
+                      <li class="grey btn" href="coronaTracker.html"><b>Trinidad and Tobago</b></li>
                     </ul>
 
                 </li>
@@ -53,27 +56,39 @@
 
     <div class="container">
       <main>
-        CONTENT WILL BE LOADED HERE
-        
-        <section id="content"></section>
+        <section style="width: 100%; height: 100%;" id="content"></section>
 
       </main>
     </div>
 
       
     <footer>
-      <div class="page-footer" style="position:fixed;bottom:0;left:0;width:100%;margin-bottom: 10px; padding-bottom: 20px;">
+      <div class="page-footer black" style="position:static;bottom:0;left:0;width:100%;margin-bottom: 10px; padding-bottom: 70px;">
         <div class="container">
           <div class="row">
-            <div class="col s12">
-              <h5 class="center white-text">FOOTER</h5>
+            <hr>
+            <div class="col s6">
+              <h5 class="center white-text" style="font-size: 1.5em;"><b>PROJECT MEMBERS</b></h5>
+              <a href="https://github.com/Boldoosang" class="left white-text">Justin Baldeosingh</a><br>
+              <a href="https://github.com/tevonthatcher" class="left white-text">Tevon Thatcher</a><br>
+              <a href="https://github.com/BrandonBharath" class="left white-text">Brandon Bharath</a><br>
+              <a href="https://github.com/816019911" class="left white-text">Luc-Aidan Roberts</a><br>
+            </div>
+            <div class="col s6">
+              <h5 class="center white-text" style="font-size: 1.5em;"><b>PROJECT RESOURCES</b></h5>
+              <a href="https://github.com/Boldoosang/__null418-finalProject" class="left white-text">Project Repository</a><br>
             </div>
           </div>
-          <p class= "grey-text text-lighten-2 right">&copy 2020 Copyright null418</p>
+          <hr>
+          <h5 class="grey-text text-lighten-2 right" style="padding: 10px; font-size: 1em;"><b>&copy 2020 COPYRIGHT NULL418</b></h5>
         </div>
       </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->

@@ -25,6 +25,9 @@
     justify-content:space-evenly;
 }
 
+.no-uppercase {
+    text-transform: none;
+}
 
 .coronaTableCountry #coronaTableHeader{
     background-color:#0B0C10;
