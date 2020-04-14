@@ -6,8 +6,10 @@
 body {
     background-color: #1f2833;
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     min-height: 99vh;
-
 }
 
 main{
@@ -16,8 +18,9 @@ main{
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 25px;
-    display: flex;
 }
+
+
 
 #logo {
     height: auto;
@@ -27,6 +30,7 @@ main{
     margin-bottom: 0px;
     margin-top:10px;
 }
+
 .page-footer{
     margin-top: 10px;
 }
