@@ -3,6 +3,7 @@ let countryList = "https://raw.githubusercontent.com/pomber/covid19/master/docs/
 let countries;
 let results;
 let selectedCountry;
+let selectedCountryCode;
 let formattedData = {
     country: 0,
     date: [],
@@ -38,8 +39,8 @@ async function getCoronaData(stats, userSelection){
         getWorldData(results, userSelection);
         drawTable(results, userSelection);
         formatData(results, countries, userSelection);
-        coronaGraph.update()
-
+        coronaGraph.update();
+        coronaPie.update();
     } catch(error) {
         coronaTrackerArea.innerHTML = `<p style="text-align: center;"><b>No results found!</b></p>`
         console.log(error);
@@ -48,6 +49,7 @@ async function getCoronaData(stats, userSelection){
 
 //NEEDS TO BE TRIGGERED BY SOMETHING
 document.addEventListener("load", getCoronaData(stats, userSelection));
+
 //END GET CORONA RESULTS AND CORONA COUNTRIES
 
 //CORONA RESULT ELEMENTS
@@ -191,24 +193,41 @@ function formatData(results, countries, selectedCountry){
             confirmedCountryCode = countries[currentCountry].code;
         } catch {}
 
-        //writeCountryData(currentCountry, confirmedCases, confirmedCountryCode);
+        writeCountryData(currentCountry, confirmedCases, confirmedCountryCode);
     }
-
-
-
 
     formattedData['piechart'].push(formattedData['confirmed'][0]);
     formattedData['piechart'].push(formattedData['deaths'][0]);
     formattedData['piechart'].push(formattedData['recovered'][0]);
+
     formattedData.country = selectedCountry;
-
-    console.log(formattedData);
-
+    selectedCountryCode = countries[userSelection].code;
 }
 
 //END FORMAT DATA FOR GRAPH
 
+//WRITE COUNTRY DATA TO ARRAY
+function writeCountryData(currentCountry, n, cCode){
+    let activeCountry;
+    let tempCountryData = [];
 
+    try {
+        tempCountryData.pop();
+        tempCountryData.pop();
+
+        let tempCode = cCode;
+        let tempConfirmed = n;
+
+        tempCountryData[0] = tempCode;
+        tempCountryData[1] = tempConfirmed;
+        
+        if(tempConfirmed !== -1)
+            formattedData.heatmap.push(tempCountryData);
+    } catch(error) {
+        console.log(error);
+    }
+}
+//END WRITE COUNTRY DATA TO ARRAY
 
 //CORONA LINE GRAPH
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
@@ -333,3 +352,60 @@ let coronaPie = new Chart(coronaPieContext, {
 });
 
 //END CORONA PIE CHART
+
+//UPDATES GRAPHS AND CHARTS
+function updateGraph(){
+    coronaPie.update();
+    coronaGraph.update();
+    drawRegionsMap();
+    drawWorldMap();
+}
+
+
+//GOOGLE GEO MAPS API
+google.charts.load('current', {'packages':['geochart']});
+google.charts.setOnLoadCallback(drawRegionsMap);
+
+
+
+//DRAWS WORLD MAP
+function drawWorldMap() {
+    console.log(formattedData.heatmap);
+    let data = formattedData.heatmap;
+
+    data = google.visualization.arrayToDataTable(data);
+
+    let options = {
+        region: "world",
+        displayMode: "region"
+    };
+
+    let chart = new google.visualization.GeoChart(document.querySelector('.coronaMapRegion'));
+
+    chart.draw(data, options);
+    document.querySelector('.coronaMapRegion').style.border = "2px solid black";
+    document.querySelector('.coronaMapRegion').style.height = "80vh";
+}
+
+//END DRAW WORLD MAP
+
+//DRAW WORLD REGION MAP
+function drawRegionsMap() {
+    console.log(formattedData.heatmap);
+    let data = formattedData.heatmap;
+
+    data = google.visualization.arrayToDataTable(data);
+
+    let options = {
+        region: selectedCountryCode,
+        displayMode: "region"
+    };
+
+    let chart = new google.visualization.GeoChart(document.querySelector('.coronaMapRegion'));
+
+    chart.draw(data, options);
+    document.querySelector('.coronaMapRegion').style.border = "2px solid black";
+    document.querySelector('.coronaMapRegion').style.height = "80vh";
+}
+
+//END DRAW WORLD REGION MAP
