@@ -34,6 +34,9 @@ main {
     border-radius: 5px;
 }
 
+.sidenav{
+    background-color: black;
+}
 #logo {
     height: auto;
     width: 25vw;
