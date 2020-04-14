@@ -20,6 +20,9 @@ body {
     position: relative;
 }
 
+.sidenav li>a{
+    padding:0;
+}
 main {
     flex: 1 0 auto;
     background-color: #c5c6c7;
@@ -29,8 +32,6 @@ main {
     display: flex;
     border: 2px dotted black;
     border-radius: 5px;
-
-
 }
 
 #logo {
@@ -67,8 +68,9 @@ main {
     font-size:30px;
 }
 
-#dropdown1{
-    color: #66fcf1;
+#dropdown1btn{
+    color: red;
+    font-size: 18px;
 }
 .card{
     background-color: #0b0c10;
@@ -100,6 +102,10 @@ main {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+}
+
+.dropdown-content li>a{
+padding-left: 20px;
 }
 
 .page-footer{
