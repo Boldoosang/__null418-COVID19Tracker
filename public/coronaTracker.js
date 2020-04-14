@@ -37,6 +37,7 @@ async function getCoronaData(stats, userSelection){
 
         arrangeData(results);
         getWorldData(results, userSelection);
+
         drawTable(results, userSelection);
         formatData(results, countries, userSelection);
         coronaGraph.update();
@@ -102,12 +103,6 @@ function getWorldData(results){
 
 
 //END GET REGION DATA
-
-//GET COUNTRY
-function acceptQuery(){
-    
-}
-//END GET COUNTRY
 
 //DRAW TABLE
 function drawTable(results, userSelection){
@@ -231,8 +226,8 @@ function writeCountryData(currentCountry, n, cCode){
 
 //CORONA LINE GRAPH
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
-//coronaGraphContext.canvas.width = document.documentElement.clientWidth;
-//coronaGraphContext.canvas.height = document.documentElement.clientHeight;
+coronaGraphContext.canvas.width = document.documentElement.clientWidth;
+coronaGraphContext.canvas.height = document.documentElement.clientHeight;
 let coronaGraph = new Chart(coronaGraphContext, {
     type: 'line',
     data: {
@@ -314,8 +309,8 @@ let coronaGraph = new Chart(coronaGraphContext, {
 //CORONA PIE CHART
 
 let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d');
-//coronaPieContext.canvas.width = document.documentElement.clientWidth;
-//coronaPieContext.canvas.height = document.documentElement.clientHeight;
+coronaPieContext.canvas.width = document.documentElement.clientWidth;
+coronaPieContext.canvas.height = document.documentElement.clientHeight;
 let coronaPie = new Chart(coronaPieContext, {
     type: 'pie',
     data: {
@@ -348,8 +343,8 @@ let coronaPie = new Chart(coronaPieContext, {
 function updateGraph(){
     coronaPie.update();
     coronaGraph.update();
-    drawRegionsMap();
     drawWorldMap();
+    drawRegionsMap();
 }
 
 
@@ -360,23 +355,23 @@ google.charts.setOnLoadCallback(drawRegionsMap);
 
 
 //DRAWS WORLD MAP
-function drawWorldMap() {
-    console.log(formattedData.heatmap);
-    let data = formattedData.heatmap;
+// function drawWorldMap() {
+//     console.log(formattedData.heatmap);
+//     let data = formattedData.heatmap;
 
-    data = google.visualization.arrayToDataTable(data);
+//     data = google.visualization.arrayToDataTable(data);
 
-    let options = {
-        region: "world",
-        displayMode: "region"
-    };
+//     let options = {
+//         region: "world",
+//         displayMode: "region"
+//     };
 
-    let chart = new google.visualization.GeoChart(document.querySelector('.coronaMapRegion'));
+//     let chart = new google.visualization.GeoChart(document.querySelector('.coronaMapRegion'));
 
-    chart.draw(data, options);
-    document.querySelector('.coronaMapRegion').style.border = "2px solid black";
-    document.querySelector('.coronaMapRegion').style.height = "80vh";
-}
+//     chart.draw(data, options);
+//     document.querySelector('.coronaMapRegion').style.border = "2px solid black";
+//     document.querySelector('.coronaMapRegion').style.height = "80vh";
+// }
 
 //END DRAW WORLD MAP
 
