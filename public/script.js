@@ -25,11 +25,7 @@ async function navigate(title, url){
   }else{
     let response = await fetch(url);
     content.innerHTML = await response.text();
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "coronaTracker.js";
-    document.getElementsByTagName("head")[0].appendChild(script);
-   // executeScripts();
+    executeScripts();
   }
 }
 
@@ -38,15 +34,17 @@ function handleClick(event){
   event.preventDefault();
   event.stopPropagation();
   let a = event.target;//get the anchor tag element
-
+    console.log(a.text);
   let text = a.text;//get text content of the anchor element
 
   let url = "coronaTracker.html";//get the url of the anchor element
   history.pushState({title:text, url: url}, null, a.href);//pass the url and text to the history
-  navigate(text, url);//then navigate to page
+
+  navigate(a.text, url);//then navigate to page
 }
 
-const menu = document.querySelector('#dropdownNav');
+const menu = document.querySelector('#dropdownNav > li');
+
 menu.addEventListener('click', handleClick, false);
 
 /* function handleBack(event){
