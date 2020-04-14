@@ -6,7 +6,7 @@
 body {
     background-color: #1f2833;
     font-family: 'Roboto', sans-serif;
-    min-height: 100vh;
+    min-height: 99vh;
 
 }
 
@@ -19,8 +19,8 @@ main{
 }
 
 #logo {
-    height: inherit;
-    width: auto;
+    height: auto;
+    width: 25vw;
 }
 .card{
     margin-bottom: 0px;
@@ -31,13 +31,13 @@ main{
 }
 
 .branding {
-    all: none;
     background-color: #0b0c10;
     display: flex;
     border-radius: 30px;
     margin-top: 5px;
     justify-content: center;
-    padding: 15px;
+    align-items: center;
+    padding: 50px;
 }
 
 .nav-wrapper{
@@ -97,4 +97,10 @@ main{
 
 footer {
     bottom: 0;
+}
+
+@media only screen and (max-width: 1000px){
+    #logo {
+        width: 50vw;
+    }
 }
