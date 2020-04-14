@@ -33,8 +33,6 @@ main {
 
 }
 
-
-
 #logo {
     height: auto;
     width: 25vw;
@@ -63,17 +61,18 @@ main {
     background-color: #0b0c10;
 }
 
-.material-icons{
+#sidenavbtn{
     background-color:#0b0c10;
     color: #66fcf1;
     font-size:30px;
 }
 
+#dropdown1{
+    color: #66fcf1;
+}
 .card{
     background-color: #0b0c10;
 }
-
-
 
 .dropbtn {
     background: black;
@@ -81,10 +80,6 @@ main {
     font-size: 16px;
     border: none;
     cursor: pointer;
-}
-
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
 }
 
 .dropdown {
@@ -112,8 +107,6 @@ main {
 
 }
 
-.dropdown a:hover {background-color: #ddd;}
-
 .show {
     display: block;
 }
@@ -132,8 +125,6 @@ footer {
 #dropdownNav {
     display: none;
 }
-
-
 
 @media only screen and (max-width: 1000px){
     #logo {
