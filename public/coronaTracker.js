@@ -21,7 +21,7 @@ let coronaTrackerArea = document.querySelector(".coronaTracker");
 let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
 //TESTING
-let userSelection = "US";
+let userSelection = "Trinidad and Tobago";
 
 //GET CORONA RESULTS AND CORONA COUNTRIES
 async function getCoronaData(stats, userSelection){
@@ -40,6 +40,9 @@ async function getCoronaData(stats, userSelection){
 
         drawTable(results, userSelection);
         formatData(results, countries, userSelection);
+
+        console.log(countries);
+
         coronaGraph.update();
         coronaPie.update();
         
@@ -384,3 +387,4 @@ function drawRegionsMap() {
 //END DRAW WORLD REGION MAP
 
 window.addEventListener("resize", drawRegionsMap);
+window.addEventListener("onload", drawRegionsMap);
