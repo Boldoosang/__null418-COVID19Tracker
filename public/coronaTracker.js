@@ -1,3 +1,5 @@
+window.addEventListener("resize", drawRegionsMap);
+window.addEventListener("onload", drawRegionsMap);
 let stats = "https://pomber.github.io/covid19/timeseries.json";
 let countryList = "https://raw.githubusercontent.com/pomber/covid19/master/docs/countries.json";
 let countries;
@@ -357,6 +359,7 @@ let coronaPie = new Chart(coronaPieContext, {
 
 //UPDATES GRAPHS AND CHARTS
 function updateGraph(){
+    document.querySelector('.coronaTracker').style.display = "block";
     coronaPie.update();
     coronaGraph.update();
     drawRegionsMap();
@@ -386,5 +389,6 @@ function drawRegionsMap() {
 }
 //END DRAW WORLD REGION MAP
 
-window.addEventListener("resize", drawRegionsMap);
-window.addEventListener("onload", drawRegionsMap);
+document.addEventListener("DOMContentLoaded", ()=> {
+    document.addEventListener("click", console.log("Hello World"));
+})

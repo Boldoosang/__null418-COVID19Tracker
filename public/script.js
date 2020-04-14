@@ -17,7 +17,6 @@
     }else{
       let response = await fetch(url);
       content.innerHTML = await response.text();
-      console.log(title);
     }
   }
   

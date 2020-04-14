@@ -48,3 +48,7 @@
     margin-right: auto;
     width: 95vw;
 }
+
+.coronaTracker {
+    display: none;
+}
