@@ -253,6 +253,7 @@ let coronaGraph = new Chart(coronaGraphContext, {
         }
     ]},
     options: {
+        backgroundColor: 'rgba(255,255,255,0.5)',
         layout: {
             padding: {
                 left: 50,
@@ -272,6 +273,7 @@ let coronaGraph = new Chart(coronaGraphContext, {
             labels: {
                 fontColor: "#FFFFFF",
                 fontFamily:"'Share Tech Mono', monospace",
+                fontSize: 18,
             },
         },
         scales: {
