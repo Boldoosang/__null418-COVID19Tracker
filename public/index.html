@@ -1,137 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable= no">
-    <title>Null418</title>
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable= no">
+      <title>null418</title>
 
-    <!-- Compiled and minified CSS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link type="text/css" rel="stylesheet" href="style.css"/>
-</head>
-<body>
-<header>
-  <div class="container">
-      
-        <div class="branding">
-          <img class= "responsive-image" id="logo" src="logo.gif">
-        </div>
-      
-    </div>
-  <div class="nav-wrapper">
-    <div class="card">
+      <!-- Compiled and minified CSS -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link type="text/css" rel="stylesheet" href="style.css"/>
+  </head>
+  <body>
+    <header>
       <div class="container">
-        <div class="card-content">
-          <ul id="menu" class="sidenav">
-            <li>
-              <div class=card>
-                <div class=card-content>
-                  <button href="index.html" valueclass="red btn">HOME</button>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div id="sidecard" class="card">
-                <div class="card-content">
-                  <a href="coronatracker.html" value="trinidad" onclick="console.log(.btn.value)"class="btn">Trinidad</a>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <a href="#" data-target="menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        </div>
-
-        <div class="right">
-            <a href="coronatracker.html">COROOONA</a>
-        </div>
-
+          
+            <div class="branding">
+              <a href="index.html"><img class= "center" id="logo" src="logo.gif"></a>
+            </div>
+          
       </div>
-    </div>
-  </div>
-</header>
+      
+      <div class="nav-wrapper">
+        <div class="card">
+          <div class="container">
+            <div class="card-content">
+              <ul id="menu" class="sidenav">
+                <li>
+                  <a><b>HOME</b></a>
+                </li>
+                <li>
+                  <a><b>COUNTRIES</b><i class="material-icons white black-text right">arrow_drop_down</i></a>
+                    <ul id="dropdownNav">
+                      <li><a><b>Trinidad and Tobago</b></a></li>
+                    </ul>
 
-<div class="container">
-  <main>
-      asdas
-    <section id="content"></section>
+                </li>
 
-  </main>
-</div>
+              </ul>
+              <a href="#" data-target="menu" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
 
-  
-<footer>
-  <div class="page-footer">
+            <div class="right">
+                <a href="coronatracker.html">COROOONA</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </header>
+
     <div class="container">
-      <div class="row">
-        <div class="col s12">
-          <h5 class="center white-text">FOOTER</h5>
+      <main>
+        CONTENT WILL BE LOADED HERE
+        
+        <section id="content"></section>
+
+      </main>
+    </div>
+
+      
+    <footer>
+      <div class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col s12">
+              <h5 class="center white-text">FOOTER</h5>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</footer>
+    </footer>
 
-<script>
- document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {});
-  });
-
-
-  function executeScripts(){
-  let script = document.querySelector('#scriptCorona').innerText;
-  try{
-    eval(script);
-  }catch(e){
-    console.error(e);
-  }   
-}
-
-
-async function navigate(title, url){
-  document.title = title;
-  let content = document.querySelector('#content');
-  if(url === null){
-    content.innerHTML = "";
-  }else{
-    let response = await fetch(url);//fetch the page eg battery.html
-    content.innerHTML = await response.text();
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "coronaTracker.js";
-    document.getElementsByTagName("head")[0].appendChild(script);
-   // executeScripts();
-  }
-}
-
-//event handler
-function handleClick(event){
-  event.preventDefault();
-  event.stopPropagation();
-  let a = event.target;//get the anchor tag element
-  let text = a.text;//get text content of the anchor element
-  let url = a.href;//get the url of the anchor element
-  history.pushState({title:text, url: url}, null, a.href);//pass the url and text to the history
-  navigate(a.text, a.href);//then navigate to page
-}
-
-const menu = document.querySelector('#menu');
-menu.addEventListener('click', handleClick, false);
-
-/* function handleBack(event){
-  //if no links were clicked pushState() is never called
-  //as pushState() is never called there will be no data in event.state
-  if(event.state == null){
-    navigate('Web APIs', null);
-  }else{
-    //links were clicked before so we can get the text and url passed from handleClick()
-    navigate(event.state.title, event.state.url);  
-  }
-}
-*/
-
-</script>
+    <script src="script.js"></script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/7.14.0/firebase-app.js"></script>
@@ -148,5 +88,5 @@ menu.addEventListener('click', handleClick, false);
 
     <script type="text/javascript" src="materialize.min.js"></script>
 
-</body>
+  </body>
 </html>
