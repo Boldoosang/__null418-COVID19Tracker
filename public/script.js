@@ -39,8 +39,22 @@
     navigate(a, "homepage.html");
   }
 
+  function handleClick2(event){
+    event.preventDefault();
+    event.stopPropagation();
+    
+    let a = event.target.innerText;
+
+    navigate(a, "measures.html");
+  }
+
   const menu = document.querySelector('#dropdown1');
   menu.addEventListener('click', handleClick, false);
   
   const menu1 = document.querySelector('#homeButt');
   menu1.addEventListener('click', handleClick1, false); 
+
+  const menu2 = document.querySelector('#measures');
+  menu2.addEventListener('click', handleClick2, false);
+
+window.onload=handleClick1;
