@@ -11,6 +11,10 @@
     <title>Corona Tracker</title>
 </head>
 <body>
+
+
+
+    
     <div class="dropdownmenu">
         <button class="dropbutn">Dropdown</button>
         <div class="dropdowncontent">
@@ -22,6 +26,7 @@
     <input type="button" id="updateG" value="Sup" style="height: 50px; width: 200px;">
 
     <div class="coronaTracker">
+        
         <div class="coronaGraph">
             <canvas id="coronaLineGraph"></canvas>
         </div>
@@ -42,16 +47,7 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script id="scriptCorona" src="coronaTracker.js"></script>
-
-
-    <script type="text/javascript">
-        function message () {
-        alert("Hello!");
-        }
-
-        var button = document.getElementById('updateG');
-        button.addEventListener('click', updateGraph);
+    <script>
     </script>
-
 </body>
 </html>

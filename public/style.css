@@ -8,6 +8,8 @@ body {
     font-family: 'Roboto', sans-serif;
     min-height: 95vh;
     min-width: 95vw;
+    text-align: justify;
+    line-height: 2;
 
 }
 
