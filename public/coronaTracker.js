@@ -102,6 +102,12 @@ function getWorldData(results){
 
 //END GET REGION DATA
 
+//GET COUNTRY
+function acceptQuery(){
+    
+}
+//END GET COUNTRY
+
 //DRAW TABLE
 function drawTable(results, userSelection){
     console.log(`Country: ${userSelection}`);

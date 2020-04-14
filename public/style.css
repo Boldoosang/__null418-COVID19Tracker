@@ -93,11 +93,29 @@ main{
 
 .dropdown a:hover {background-color: #ddd;}
 
-.show {display: block;}
+.show {
+    display: block;
+}
 
 footer {
     bottom: 0;
 }
+
+.nav-wrapper {
+    text-transform: uppercase;
+}
+
+.nav-wrapper li:hover > #dropdownNav {
+    display: flex;
+    flex-direction: column;
+    background-color: #ccc;
+}
+
+#dropdownNav {
+    display: none;
+}
+
+
 
 @media only screen and (max-width: 1000px){
     #logo {
