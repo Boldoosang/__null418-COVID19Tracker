@@ -4,6 +4,7 @@ let countries;
 let results;
 let selectedCountry;
 let formattedData = {
+    country: 0,
     date: [],
     confirmed: [],
     deaths: [],
@@ -35,8 +36,9 @@ async function getCoronaData(stats){
 
         arrangeData(results);
         getWorldData(results, userSelection);
-        formatData(results, countries, userSelection);
         drawTable(results, userSelection);
+        formatData(results, countries, userSelection);
+        coronaGraph.update()
 
     } catch(error) {
         coronaTrackerArea.innerHTML = `<p style="text-align: center;"><b>No results found!</b></p>`
@@ -45,7 +47,7 @@ async function getCoronaData(stats){
 }
 
 //NEEDS TO BE TRIGGERED BY SOMETHING
-getCoronaData(stats);
+document.addEventListener("load",getCoronaData(stats));
 
 //END GET CORONA RESULTS AND CORONA COUNTRIES
 
@@ -183,14 +185,9 @@ function formatData(results, countries, selectedCountry){
     let confirmedCountryCode;
     for (let currentCountry in countries){
         try {
-            confirmedCases = parseInt(results[currentCountry][0].confirmed);
+            confirmedCases =  parseInt(results[currentCountry][0].confirmed);
             confirmedCountryCode = countries[currentCountry].code;
-        } catch(error) {
-            console.log(error);
-        }
-
-        console.log(confirmedCases);
-        console.log(confirmedCountryCode);
+        } catch {}
 
         //writeCountryData(currentCountry, confirmedCases, confirmedCountryCode);
     }
@@ -201,6 +198,7 @@ function formatData(results, countries, selectedCountry){
     formattedData['piechart'].push(formattedData['confirmed'][0]);
     formattedData['piechart'].push(formattedData['deaths'][0]);
     formattedData['piechart'].push(formattedData['recovered'][0]);
+    formattedData.country = selectedCountry;
 
 
 
@@ -221,22 +219,22 @@ let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('
 let coronaGraph = new Chart(coronaGraphContext, {
     type: 'line',
     data: {
-        labels: [1,2,3,4,5],
+        labels: formattedData.date,
         datasets: [{
             label: 'Confirmed Cases',
-            data: [2,5,7,8],
+            data: formattedData.confirmed,
             borderColor:'#19AADE',
             fill: false,
             lineTension: 0
         },{
             label: 'Recovered',
-            data: [2,4,1,3],
+            data: formattedData.recovered,
             borderColor: '#7D3AC1',
             fill: false,
             lineTension: 0
         },{
             label: 'Deaths',
-            data: [21,3,5,2],
+            data: formattedData.deaths,
             borderColor: '#C02323',
             fill: false,
             lineTension: 0
