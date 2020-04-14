@@ -47,7 +47,7 @@ async function getCoronaData(stats, userSelection){
 }
 
 //NEEDS TO BE TRIGGERED BY SOMETHING
-document.addEventListener("load", console.log("loaded"));
+document.addEventListener("load", getCoronaData(stats, userSelection));
 //END GET CORONA RESULTS AND CORONA COUNTRIES
 
 //CORONA RESULT ELEMENTS
@@ -202,11 +202,7 @@ function formatData(results, countries, selectedCountry){
     formattedData['piechart'].push(formattedData['recovered'][0]);
     formattedData.country = selectedCountry;
 
-
-
     console.log(formattedData);
-
-
 
 }
 
@@ -296,3 +292,35 @@ let coronaGraph = new Chart(coronaGraphContext, {
 });
 //END CORONA LINE GRAPH
 
+//CORONA PIE CHART
+
+let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d');
+//coronaPieContext.canvas.width = document.documentElement.clientWidth;
+//coronaPieContext.canvas.height = document.documentElement.clientHeight;
+let coronaPie = new Chart(coronaPieContext, {
+    type: 'pie',
+    data: {
+        datasets: [{
+            data: formattedData.piechart,
+            backgroundColor : ['rgba(0, 0, 200, 1)','rgba(150, 0, 0, 1)','rgba(0, 150, 0, 1)']
+        }],
+        labels : ["Confirmed Cases", "Deaths", "Recovered"]
+    },
+    options: {
+        layout: {
+            padding: {
+                left: 50,
+                right: 10,
+                top: 50,
+                bottom: 25
+            }
+        },
+        title: {
+            display: true,
+            text: "Corona Virus Statistical Pie Chart",
+            fontSize: 24
+        }
+    }
+});
+
+//END CORONA PIE CHART
