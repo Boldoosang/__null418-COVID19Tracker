@@ -262,7 +262,7 @@ let coronaGraph = new Chart(coronaGraphContext, {
         },
         scales: {
             yAxes: [{
-                position: "left",
+                position: "right",
                 type: "linear",
                 gridLines: {
                     color: "#C5C6C7",
@@ -302,7 +302,7 @@ let coronaPie = new Chart(coronaPieContext, {
     data: {
         datasets: [{
             data: formattedData.piechart,
-            backgroundColor : ['#EABD3B','#C02323','#00CC00']
+            backgroundColor : ['#EABD3B','#C02323','#00CC00'],
         }],
         labels: ["Confirmed Cases", "Deaths", "Recovered"],
     },
@@ -319,11 +319,12 @@ let coronaPie = new Chart(coronaPieContext, {
             labels: {
                 fontColor: "#FFFFFF",
                 fontFamily:"'Share Tech Mono', monospace",
+                fontSize: 18,
             },
         },
         title: {
             display: true,
-            text: "Corona Virus Statistical Pie Chart",
+            text: "CORONA VIRUS STATISTICAL PIE CHART",
             fontSize: 36,
             fontColor: "#66FCF1",
             fontFamily:"'Share Tech Mono', monospace"
