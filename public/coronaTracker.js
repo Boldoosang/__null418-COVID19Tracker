@@ -41,8 +41,6 @@ async function getCoronaData(stats, userSelection){
         drawTable(results, userSelection);
         formatData(results, countries, userSelection);
 
-        console.log(countries);
-
         coronaGraph.update();
         coronaPie.update();
         
@@ -53,6 +51,11 @@ async function getCoronaData(stats, userSelection){
 }
 
 //NEEDS TO BE TRIGGERED BY SOMETHING
+function getUserSelection(){
+    userSelection = document.getElementById("coronaCountry").value;
+    console.log(`User Searched: ${userSelection}`); //Debug
+    getCoronaData(stats, userSelection);
+}
 document.addEventListener("load", getCoronaData(stats, userSelection));
 
 //END GET CORONA RESULTS AND CORONA COUNTRIES
@@ -121,6 +124,8 @@ function drawTable(results, userSelection){
     console.log(`Confirmed: ${results[userSelection][0].confirmed}`);
     console.log(`Deaths: ${results[userSelection][0].deaths}`);
     console.log(`Recovered: ${results[userSelection][0].recovered}`);
+
+    
 
     cTableElement.innerHTML = '<p>The results of the query are shown below!</p>';
     cTableElement.innerHTML +=
@@ -408,11 +413,7 @@ function drawRegionsMap() {
     
 }
 
+let mapTitle = document.querySelector(".map");
+mapTitle.innerHTML = `Map of ${userSelection}`;
+
 //END DRAW WORLD REGION MAP
-
-document.addEventListener("DOMContentLoaded", ()=> {
-    let button = document.getElementById('updateG');
-    button.addEventListener('click', updateGraph);
-})
-
-let loadCoronaTracker = document.querySelector('#updateG');

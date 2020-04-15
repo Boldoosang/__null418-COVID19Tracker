@@ -101,3 +101,8 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .coronaTableCountry table {
+    width: 100%;
+    text-align: center;
+}
