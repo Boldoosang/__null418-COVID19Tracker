@@ -35,6 +35,9 @@ main {
     border: 2px dotted black;
     border-radius: 5px;
 }
+.homeData , .measuresData{
+    padding: 25px;
+}
 
 .sidenav{
     background-color: black;

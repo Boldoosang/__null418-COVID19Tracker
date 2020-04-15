@@ -404,7 +404,7 @@ function drawRegionsMap() {
 
     try {
         let mapTitle = document.querySelector(".mapTitle");
-        mapTitle.innerHTML = `<h2>MAP OF ${userSelection}<h2>`;
+        mapTitle.innerHTML = `<h2>CORONA HEATMAP OF ${userSelection}<h2>`;
     } catch(error){
         console.log(error);
         console.log("Wrong map selected");
