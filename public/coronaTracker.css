@@ -50,7 +50,7 @@
     display: none;
 }
 
-.mapTitle, .graphTitle, .chartTitle{
+.mapTitle, .graphTitle, .chartTitle, .tableTitle{
     text-align:center;
     text-transform: uppercase;
     font-family:'Share Tech Mono', monospace;

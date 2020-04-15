@@ -131,12 +131,12 @@ function drawTable(results, userSelection){
     console.log(`Deaths: ${results[userSelection][0].deaths}`);
     console.log(`Recovered: ${results[userSelection][0].recovered}`);
 
-    
+    let tableTitle = document.querySelector(".tableTitle");
+    tableTitle.innerHTML = `<h2>DATA FOR ${userSelection}<h2>`;
 
     
     cTableElement.innerHTML =
     `
-    <h2>${userSelection}</h2>
     <hr style="border: 2px solid white;">
     <table class="centered" id="coronaTableHeader">
         <tr>
