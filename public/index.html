@@ -94,19 +94,12 @@
 
     <script>
 
-      let loaded = false;
-
-        function missTeeka(){
-          if(loaded == false){
-              $('#content').load('coronaTracker.html', function () {
-                    this.loaded = true;
-                    console.log("Hello World!");
-                    $.getScript('coronaTracker.js');
-                    updateGraph();
-              })
-            }
-    
-          };
+      function missTeeka(){
+            $('#content').load('coronaTracker.html', function () {
+                  console.log("Hello World!");
+                  $.getScript('coronaTracker.js');
+            })
+        }
     </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->

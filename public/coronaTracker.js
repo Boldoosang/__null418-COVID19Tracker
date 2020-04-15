@@ -398,7 +398,4 @@ document.addEventListener("DOMContentLoaded", ()=> {
 })
 
 let loadCoronaTracker = document.querySelector('#updateG');
-function printMessage(){
-  console.log("helloworl");
-}
-setInterval(printMessage, 1000);
+onload = updateGraph();
