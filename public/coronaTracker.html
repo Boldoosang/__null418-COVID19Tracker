@@ -11,9 +11,9 @@
     <title>Corona Tracker</title>
 </head>
 <body>
-    <div class="container">
-        <label>Browser Select</label>
-    <select class="browser-default" id="coronaCountry" name="coronaCountry" required>
+    <div class="container" style="text-align: center;">
+        <label style="color: white; font-weight: 700;">COUNTRY SELECT: </label> <br>
+    <select style="width: 500px; height: 50px" class="browser-default" id="coronaCountry" name="coronaCountry" required>
         <option value="Afghanistan">Afghanistan</option>
         <option value="Albania">Albania</option>
         <option value="Algeria">Algeria</option>
@@ -191,10 +191,10 @@
         <option selected value="World">World</option>
         <option value="Zimbabwe">Zimbabwe</option>
   </select>
-  <input id="coronaSubmit-btn" type="button" value="Submit" onclick="getUserSelection()">
+  <input id="coronaSubmit-btn" style="height: 50px; width: 200px;" type="button" value="Submit" onclick="getUserSelection()">
     </div>
     
-    <div class="coronaTracker">
+    <div class="coronaTracker" style="padding-top: 50px">
         
         <div class="coronaGraph">
             <canvas id="coronaLineGraph"></canvas>
