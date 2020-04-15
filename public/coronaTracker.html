@@ -223,5 +223,16 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script id="scriptCorona" src="coronaTracker.js"></script>
 
+    <script>
+        var body = document.body,
+        html = document.documentElement;
+
+        var height = Math.max( body.scrollHeight, body.offsetHeight, 
+        html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+        var sbutton= document.getElementById("coronaSubmit-btn");
+        
+        addEventListener('resize',console.log(height),false);
+    </script>
 </body>
 </html>
