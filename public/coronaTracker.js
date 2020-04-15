@@ -184,8 +184,6 @@ function drawTable(results, userSelection){
 function formatData(results, countries, selectedCountry){
     console.log("INSIDE FORMAT DATA");
 
-    console.log(results[selectedCountry]);
-
     for(let item = 0; item < results[selectedCountry].length; item++){
         formattedData.date.pop();
         formattedData.deaths.pop();
@@ -406,7 +404,7 @@ function drawRegionsMap() {
 
     try {
         let mapTitle = document.querySelector(".mapTitle");
-        mapTitle.innerHTML = `<h3>MAP OF ${userSelection}<h2>`;
+        mapTitle.innerHTML = `<h2>MAP OF ${userSelection}<h2>`;
     } catch(error){
         console.log(error);
         console.log("Wrong map selected");
