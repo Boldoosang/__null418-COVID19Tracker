@@ -88,15 +88,19 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    
+    <script type="text/javascript" src="materialize.min.js"></script>
     
     <script src="script.js"></script>
 
     <script>
-      $("#content").load("coronaTracker.html, script");
-    </script>
 
-    
+      function missTeeka(){
+            $('#content').load('coronaTracker.html', function () {
+                  console.log("Hello World!");
+                  $.getScript('coronaTracker.js');
+            })
+        }
+    </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/7.14.0/firebase-app.js"></script>
@@ -111,6 +115,6 @@
 
     <script src="/__/firebase/init.js"></script>
 
-    <script type="text/javascript" src="materialize.min.js"></script>
+    
   </body>
 </html>
