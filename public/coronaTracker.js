@@ -53,6 +53,8 @@ async function getCoronaData(stats, userSelection){
         coronaPie.update();
 
         updateGraph();
+
+
         
     } catch(error) {
         coronaTrackerArea.innerHTML = `<p style="text-align: center; color: white;"><b>No results found!</b></p>`
@@ -111,9 +113,7 @@ function getWorldData(results){
         worldResults.World.push(statsObject);
     }
 
-
     Object.assign(results, worldResults);
-
 
 }
 
@@ -180,15 +180,19 @@ function drawTable(results, userSelection){
 
 //FORMAT DATA FOR GRAPH
 function formatData(results, countries, selectedCountry){
-    
-    for(let item in formattedData){
-        formattedData['date'].pop();
-        formattedData['deaths'].pop();
-        formattedData['confirmed'].pop();
-        formattedData['recovered'].pop();
-        formattedData['piechart'].pop();
-    }
+    console.log("INSIDE FORMAT DATA");
 
+    console.log(results[selectedCountry]);
+
+    for(let item = 0; item < results[selectedCountry].length; item++){
+        formattedData.date.pop();
+        formattedData.deaths.pop();
+        formattedData.confirmed.pop();
+        formattedData.recovered.pop();
+        formattedData.piechart.pop();
+    }
+    
+    console.log(formattedData);
     
     for(let item in results[selectedCountry]){
         let formattedDate = Date.parse(results[selectedCountry][item].date);
