@@ -390,11 +390,11 @@ function drawRegionsMap() {
     let data = formattedData.heatmap;
 
     data = google.visualization.arrayToDataTable(data);
-
+    
     let options = {
         region: selectedCountryCode,
         width: $('#coronaMapRegion').width(),
-        colorAxis: {colors: ['#00853f', "yellow" ,"yellow", 'orange', "orange", "#e31b23", "red", "red","red","red"]},
+        colorAxis: {colors: ["green","yellow","yellow","red","red","red","red","red","red","red","red","red","red",]},
         displayMode: "region",
         backgroundColor: "black"
     };
