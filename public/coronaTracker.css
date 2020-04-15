@@ -136,7 +136,8 @@
     }
 
     .tableTitle:after {
-        content: "<- Scrollable ->";
+        content: "<- Mobile Scrollable ->";
+        font-size: 16px;
     }
 
     .coronaTableCountry hr{

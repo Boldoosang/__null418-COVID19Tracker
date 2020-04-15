@@ -284,8 +284,6 @@ let coronaGraph = new Chart(coronaGraphContext, {
         backgroundColor: 'rgba(255,255,255,0.5)',
         layout: {
             padding: {
-                left: 50,
-                right: 10,
                 top: 0,
                 bottom: 0
             }
@@ -354,9 +352,6 @@ let coronaPie = new Chart(coronaPieContext, {
     options: {
         layout: {
             padding: {
-                left: 50,
-                right: 10,
-                top: 50,
                 bottom: 25
             }
         },
