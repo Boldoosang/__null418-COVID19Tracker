@@ -66,6 +66,10 @@ main {
     padding: 50px;
 }
 
+picture {
+    padding-top : 30px;
+}
+
 .nav-wrapper{
     margin-top: 10px;
     background-color: #0b0c10;
@@ -98,7 +102,6 @@ footer {
     bottom: 0;
 }
 
-
 .nav-wrapper li:hover > #dropdownNav {
     display: flex;
     flex-direction: column;
@@ -109,10 +112,12 @@ footer {
     display: none;
 }
 
+#logo {
+    width: 20vw;
+}
 
 
-
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1100px){
     #logo {
         width: 50vw;
     }
