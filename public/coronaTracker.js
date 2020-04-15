@@ -137,7 +137,7 @@ function drawTable(results, userSelection){
     
     cTableElement.innerHTML =
     `
-    <hr style="border: 2px solid white; min-width: 1000px;">
+    <hr style="border: 2px solid white;">
     <table class="centered" id="coronaTableHeader">
         <tr>
             <td><b>Date</b></td>
@@ -429,3 +429,6 @@ function drawRegionsMap() {
 }
 
 //END DRAW WORLD REGION MAP
+
+
+//SCROLLABLE DRAGGING

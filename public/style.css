@@ -108,6 +108,8 @@ footer {
     display: none;
 }
 
+
+
 @media only screen and (max-width: 1000px){
     #logo {
         width: 50vw;
