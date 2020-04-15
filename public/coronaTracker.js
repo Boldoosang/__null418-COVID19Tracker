@@ -55,7 +55,7 @@ async function getCoronaData(stats, userSelection){
         updateGraph();
 
 
-        outcomeArea.innerHTML = '<p style="text-align: center; color: white;"><b>The result of the query is shown below!</b></p>';
+        outcomeArea.innerHTML = '<p style="text-align: center; color: white;"><b>The result of the query is shown below!</b><br><hr class="segmentedGraphs"></p>';
     } catch(error) {
         document.querySelector(".coronaTracker").style.display = "none";
         outcomeArea.innerHTML = `<p style="text-align: center; color: white;"><b>No results found!</b></p>`
@@ -132,7 +132,7 @@ function drawTable(results, userSelection){
     console.log(`Recovered: ${results[userSelection][0].recovered}`);
 
     let tableTitle = document.querySelector(".tableTitle");
-    tableTitle.innerHTML = `<h2>DATA FOR ${userSelection}<h2>`;
+    tableTitle.innerHTML = `<hr class="segmentedGraphs"><h2>DATA FOR ${userSelection}</h2>`;
 
     
     cTableElement.innerHTML =
@@ -182,7 +182,7 @@ function drawTable(results, userSelection){
 
 //FORMAT DATA FOR GRAPH
 function formatData(results, countries, selectedCountry){
-    console.log("INSIDE FORMAT DATA");
+
 
     for(let item = 0; item < results[selectedCountry].length; item++){
         formattedData.date.pop();
@@ -191,8 +191,6 @@ function formatData(results, countries, selectedCountry){
         formattedData.recovered.pop();
         formattedData.piechart.pop();
     }
-    
-    console.log(formattedData);
     
     for(let item in results[selectedCountry]){
         let formattedDate = Date.parse(results[selectedCountry][item].date);
@@ -288,12 +286,6 @@ let coronaGraph = new Chart(coronaGraphContext, {
                 bottom: 0
             }
         },
-        title: {
-            display: true,
-            fontSize: 36,
-            fontColor: "#66FCF1",
-            fontFamily:"'Share Tech Mono', monospace"
-        },
         legend: {
             labels: {
                 fontColor: "#FFFFFF",
@@ -362,12 +354,6 @@ let coronaPie = new Chart(coronaPieContext, {
                 fontSize: 18,
             },
         },
-        title: {
-            display: true,
-            fontSize: 36,
-            fontColor: "#66FCF1",
-            fontFamily:"'Share Tech Mono', monospace"
-        }
     }
 });
 
@@ -387,11 +373,11 @@ google.charts.load('current', {'packages':['geochart']});
 google.charts.setOnLoadCallback(drawRegionsMap);
 
 let graphTitle = document.querySelector(".graphTitle");
-graphTitle.innerHTML = `<h2>CORONA VIRUS STATISTICAL LINE GRAPH<h2>`;
+graphTitle.innerHTML = `<h2>CORONA VIRUS STATISTICAL LINE GRAPH</h2>`;
 
 
 let chartTitle = document.querySelector(".chartTitle");
-chartTitle.innerHTML = `<h2>CORONA VIRUS STATISTICAL PIE CHART<h2>`;
+chartTitle.innerHTML = `<hr class="segmentedGraphs"><h2>CORONA VIRUS STATISTICAL PIE CHART</h2>`;
 
 //DRAW WORLD REGION MAP
 function drawRegionsMap() {
@@ -399,7 +385,7 @@ function drawRegionsMap() {
 
     try {
         let mapTitle = document.querySelector(".mapTitle");
-        mapTitle.innerHTML = `<h2>CORONA HEATMAP OF ${userSelection}<h2>`;
+        mapTitle.innerHTML = `<hr class="segmentedGraphs"><h2>CORONA HEATMAP OF ${userSelection}</h2>`;
     } catch(error){
         console.log(error);
         console.log("Wrong map selected");
