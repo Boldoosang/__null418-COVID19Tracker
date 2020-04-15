@@ -41,8 +41,10 @@ main {
 }
 
 .sidenav{
-    background-color: black;
+    letter-spacing: 2px;
 }
+
+
 #logo {
     height: auto;
     width: 25vw;
