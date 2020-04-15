@@ -10,6 +10,7 @@
     line-height:2.5;
     color:#66FCF1;
     font-weight:600;
+    font-size: 1.5em !important;
 }
 
 .coronaTableCountry p{
@@ -41,7 +42,7 @@
 }
 
 .coronaTableCountry #coronaTableHeader{
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .coronaTracker {
@@ -58,7 +59,7 @@
     line-height:2.5;
     color:#66FCF1;
     font-weight:600;
-    font-size: 36px;
+    font-size: 1.5em;
     padding-top: 30px;
 }
 
@@ -121,5 +122,25 @@
 }
 
 .coronaTableCountry {
-    overflow: auto;
+    overflow-x: auto;
+}
+
+.coronaTableCountry hr{
+    width: 100%;
+    overflow: visible;
+}
+
+@media only screen and (max-width : 1000px){
+    .coronaTracker h2{
+        font-size: 0.7em;
+    }
+
+    .tableTitle:after {
+        content: "<- Scrollable ->";
+    }
+
+    .coronaTableCountry hr{
+        width: 1000px;
+        overflow-x: visible;
+    }
 }
