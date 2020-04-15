@@ -18,22 +18,22 @@
         main {
             border: none;
         }
-        
         iframe{
             min-width: 100%;
         }
+
     </style>
-
-<script>
-    function resizeIframe(obj) {
-      obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-      console.log("adasdasd");
-    }
-
-
-  </script>
 </head>
     <body>
-            <iframe id="iFrame1" frameborder="1" src="coronaTracker.html" onload="resizeIframe(this)" scrolling="no" ></iframe>
+        
+            <iframe id="iFrame1" frameborder="1" src="coronaTracker.html" onload="resizeIframe(this)" scrolling="yes" ></iframe>
+            
+            <script>
+                function resizeIframe(obj) {
+                    console.log("Called");
+                    $.getScript("resizeScript.js");
+                    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+                }
+            </script>
     </body>
 </html>

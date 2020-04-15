@@ -1,6 +1,12 @@
 window.addEventListener("resize", drawRegionsMap);
 load = drawRegionsMap;
 
+//TESTING
+
+
+
+
+
 let stats = "https://pomber.github.io/covid19/timeseries.json";
 let countryList = "https://raw.githubusercontent.com/pomber/covid19/master/docs/countries.json";
 let countries;
