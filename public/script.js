@@ -25,7 +25,7 @@
     
     let a = event.target.innerText;
 
-    navigate(a, "coronaPage.html");
+    navigate(a, "CoronaPage.html");
   }
   
   function handleClick1(event){
@@ -56,8 +56,3 @@
   menu2.addEventListener('click', handleClick2, false);
 
 window.onload=handleClick1;
-
-document.addEventListener('DOMContentLoaded', function() {
-  let elems = document.querySelectorAll('select');
-  let instances = M.FormSelect.init(elems, options);
-});
