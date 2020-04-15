@@ -424,6 +424,3 @@ function drawRegionsMap() {
 }
 
 //END DRAW WORLD REGION MAP
-
-
-//SCROLLABLE DRAGGING
