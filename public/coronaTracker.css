@@ -20,6 +20,7 @@
 .coronaTableCountry td{
     line-height:3;
     width: 20%;
+    min-width: 150px;
     letter-spacing: 2px;
     text-transform: uppercase;
     justify-content:space-evenly;
@@ -104,6 +105,7 @@
 }
 
 .coronaTableCountry table {
+    min-width: 500px !important;
     width: 100%;
     text-align: center;
 }
