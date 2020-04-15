@@ -37,7 +37,7 @@
 
 .coronaTableCountry {
     color:white;
-    font-family:'Share Tech Mono', monospace;
+    font-family:'Ubuntu Mono', monospace;
 }
 
 .coronaTableCountry #coronaTableHeader{
@@ -59,7 +59,7 @@
     color:#66FCF1;
     font-weight:600;
     font-size: 36px;
-    margin-bottom: 30px;
+    padding-top: 30px;
 }
 
 .dropbutn {
