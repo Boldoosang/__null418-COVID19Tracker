@@ -24,7 +24,7 @@ let coronaTrackerArea = document.querySelector(".coronaTracker");
 let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
 //TESTING
-let userSelection = "Trinidad and Tobago";
+let userSelection = "world";
 
 //GET CORONA RESULTS AND CORONA COUNTRIES
 async function getCoronaData(stats, userSelection){
