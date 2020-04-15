@@ -1,4 +1,5 @@
 window.addEventListener("resize", drawRegionsMap);
+window.addEventListener("load", drawRegionsMap);
 
 
 let stats = "https://pomber.github.io/covid19/timeseries.json";
