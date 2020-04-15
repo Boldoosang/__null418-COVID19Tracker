@@ -78,9 +78,11 @@ picture {
 }
 
 #sidenavbtn{
-    background-color:#0b0c10;
-    color: #66fcf1;
     font-size:30px;
+}
+
+#sidenavbtn a:active{
+    color: red;
 }
 
 #dropdown1btn{
