@@ -23,8 +23,16 @@ let worldResults = {World: []};
 let coronaTrackerArea = document.querySelector(".coronaTracker");
 let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
-//TESTING
-let userSelection = "World";
+let userSelection;
+
+//NEEDS TO BE TRIGGERED BY SOMETHING
+function getUserSelection(){
+    let sel = document.getElementById("coronaCountry").value;
+    userSelection = sel;
+    console.log(`User Selected: ${userSelection}`); //Debug
+    getCoronaData(stats, userSelection);
+}
+
 
 //GET CORONA RESULTS AND CORONA COUNTRIES
 async function getCoronaData(stats, userSelection){
@@ -43,6 +51,8 @@ async function getCoronaData(stats, userSelection){
 
         coronaGraph.update();
         coronaPie.update();
+
+        updateGraph();
         
     } catch(error) {
         coronaTrackerArea.innerHTML = `<p style="text-align: center; color: white;"><b>No results found!</b></p>`
@@ -50,13 +60,7 @@ async function getCoronaData(stats, userSelection){
     }
 }
 
-//NEEDS TO BE TRIGGERED BY SOMETHING
-function getUserSelection(){
-    userSelection = document.getElementById("coronaCountry").value;
-    console.log(`User Searched: ${userSelection}`); //Debug
-    getCoronaData(stats, userSelection);
-}
-document.addEventListener("load", getCoronaData(stats, userSelection));
+
 
 //END GET CORONA RESULTS AND CORONA COUNTRIES
 
@@ -211,9 +215,6 @@ function formatData(results, countries, selectedCountry){
     formattedData['piechart'].push(formattedData['confirmed'][0]);
     formattedData['piechart'].push(formattedData['deaths'][0]);
     formattedData['piechart'].push(formattedData['recovered'][0]);
-
-
-    console.log(selectedCountry);
 
     if(selectedCountry != "World") {
         formattedData.country = selectedCountry;
@@ -392,8 +393,13 @@ google.charts.setOnLoadCallback(drawRegionsMap);
 function drawRegionsMap() {
     let data = formattedData.heatmap;
 
-    let mapTitle = document.querySelector(".map");
-    mapTitle.innerHTML = `Map of ${userSelection}`;
+    try {
+        let mapTitle = document.querySelector(".map");
+        mapTitle.innerHTML = `Map of ${userSelection}`;
+    } catch(error){
+        console.log(error);
+        console.log("Wrong map selected");
+    }
 
     data = google.visualization.arrayToDataTable(data);
     
