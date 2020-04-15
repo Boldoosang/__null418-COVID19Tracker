@@ -9,11 +9,11 @@
   });
 
   async function navigate(title, url){
-    document.title = title;
+    document.title = "null418 - " + title;
     let content = document.querySelector('#content');
     if(url === null){
-      content.innerHTML = "";
-    }else{
+      content.innerHTML = "Unable to load content!";
+    } else {
       let response = await fetch(url);
       content.innerHTML = await response.text();
     }
@@ -55,4 +55,9 @@
   const menu2 = document.querySelector('#measures');
   menu2.addEventListener('click', handleClick2, false);
 
-window.onload=handleClick1;
+window.onload = function() {
+  event.preventDefault();
+  event.stopPropagation();
+
+  navigate("HOME", "homepage.html");
+};

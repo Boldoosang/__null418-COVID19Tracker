@@ -20,7 +20,6 @@ body {
 #content {
     position: relative;
     overflow: visible;
-    padding: 15px;
 }
 
 .sidenav li>a{

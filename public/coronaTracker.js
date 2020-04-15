@@ -294,7 +294,6 @@ let coronaGraph = new Chart(coronaGraphContext, {
         },
         title: {
             display: true,
-            text: "CORONA VIRUS STATISTICAL LINE GRAPH",
             fontSize: 36,
             fontColor: "#66FCF1",
             fontFamily:"'Share Tech Mono', monospace"
@@ -372,7 +371,6 @@ let coronaPie = new Chart(coronaPieContext, {
         },
         title: {
             display: true,
-            text: "CORONA VIRUS STATISTICAL PIE CHART",
             fontSize: 36,
             fontColor: "#66FCF1",
             fontFamily:"'Share Tech Mono', monospace"
@@ -395,13 +393,20 @@ function updateGraph(){
 google.charts.load('current', {'packages':['geochart']});
 google.charts.setOnLoadCallback(drawRegionsMap);
 
+let graphTitle = document.querySelector(".graphTitle");
+graphTitle.innerHTML = `<h2>CORONA VIRUS STATISTICAL LINE GRAPH<h2>`;
+
+
+let chartTitle = document.querySelector(".chartTitle");
+chartTitle.innerHTML = `<h2>CORONA VIRUS STATISTICAL PIE CHART<h2>`;
+
 //DRAW WORLD REGION MAP
 function drawRegionsMap() {
     let data = formattedData.heatmap;
 
     try {
-        let mapTitle = document.querySelector(".map");
-        mapTitle.innerHTML = `Map of ${userSelection}`;
+        let mapTitle = document.querySelector(".mapTitle");
+        mapTitle.innerHTML = `<h3>MAP OF ${userSelection}<h2>`;
     } catch(error){
         console.log(error);
         console.log("Wrong map selected");
@@ -424,8 +429,5 @@ function drawRegionsMap() {
     chart.draw(data, options);
     
 }
-
-let mapTitle = document.querySelector(".map");
-mapTitle.innerHTML = `Map of ${userSelection}`;
 
 //END DRAW WORLD REGION MAP
