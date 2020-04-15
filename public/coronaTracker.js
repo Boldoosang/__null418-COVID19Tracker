@@ -17,7 +17,7 @@ let formattedData = {
     heatmap: [["Country","Infected"]]
 };
 
-let worldResults = {World: []};
+
 
 
 let coronaTrackerArea = document.querySelector(".coronaTracker");
@@ -90,6 +90,7 @@ function getWorldData(results){
     let regionTotalConfirmed = 0;
     let regionTotalDeaths = 0;
     let regionTotalRecovered = 0;
+    let worldResults = {World: []};
 
     //Needed a random country to test the end of the array length.
     for(let day = 0; day < results['Trinidad and Tobago'].length; day++){
