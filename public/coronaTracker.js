@@ -252,8 +252,8 @@ function writeCountryData(currentCountry, n, cCode){
 
 //CORONA LINE GRAPH
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
-coronaGraphContext.canvas.width = document.documentElement.clientWidth;
-coronaGraphContext.canvas.height = document.documentElement.clientHeight;
+//coronaGraphContext.canvas.width = document.documentElement.clientWidth;
+//coronaGraphContext.canvas.height = document.documentElement.clientHeight;
 let coronaGraph = new Chart(coronaGraphContext, {
     type: 'line',
     data: {
@@ -330,8 +330,8 @@ let coronaGraph = new Chart(coronaGraphContext, {
 //CORONA PIE CHART
 
 let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d');
-coronaPieContext.canvas.width = document.documentElement.clientWidth;
-coronaPieContext.canvas.height = document.documentElement.clientHeight;
+//coronaPieContext.canvas.width = document.documentElement.clientWidth;
+//coronaPieContext.canvas.height = document.documentElement.clientHeight;
 
 
 let coronaPie = new Chart(coronaPieContext, {
