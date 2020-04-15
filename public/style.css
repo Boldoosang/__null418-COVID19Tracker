@@ -112,11 +112,14 @@ footer {
 
 
 
-@media only screen and (max-width: 1400){
+@media only screen and (max-width: 1000px){
     #logo {
         width: 50vw;
     }
+}
+
+@media only screen and (max-width: 1200px){
     .container {
-        width: 99vw;
+        width: 95vw;
     }
 }
