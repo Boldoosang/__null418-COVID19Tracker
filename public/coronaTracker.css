@@ -63,6 +63,9 @@
     font-size: 1.5em;
 }
 
+hr{
+    border-top: 2px solid white;
+}
 .dropbutn {
     background-color: #66fcf1;
     color: black;
