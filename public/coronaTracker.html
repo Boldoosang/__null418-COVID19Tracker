@@ -210,7 +210,7 @@
         </div>
 
         <div class="mapTitle"></div>
-        <div class="coronaMapRegion" style="height: 100vh; width: 100%; margin-top: 20px;"></div>
+        <div class="coronaMapRegion" style="width: 100%; margin-top: 20px;"></div>
 
         <div class="tableTitle"></div>
         <div class="coronaTableCountry"></div>
@@ -230,9 +230,8 @@
         var height = Math.max( body.scrollHeight, body.offsetHeight, 
         html.clientHeight, html.scrollHeight, html.offsetHeight );
 
-        var sbutton= document.getElementById("coronaSubmit-btn");
+        console.log(height);
         
-        addEventListener('resize',console.log(height),false);
     </script>
 </body>
 </html>
