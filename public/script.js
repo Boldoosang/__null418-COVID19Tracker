@@ -9,7 +9,7 @@
   });
 
   async function navigate(title, url){
-    document.title = "null418 - " + title;
+    document.title = "__null418 COVID19 - " + title;
     let content = document.querySelector('#content');
     if(url === null){
       content.innerHTML = "Unable to load content!";

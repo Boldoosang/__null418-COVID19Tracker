@@ -34,6 +34,7 @@ main {
     display: flex;
     border: 2px dotted black;
     border-radius: 5px;
+    min-height: 100%;
 }
 .homeData , .measuresData{
     padding: 25px;
