@@ -33,7 +33,7 @@ function getUserSelection(){
     getCoronaData(stats, userSelection);
 }
 
-
+let outcomeArea = document.querySelector(".outcome");
 //GET CORONA RESULTS AND CORONA COUNTRIES
 async function getCoronaData(stats, userSelection){
     try {
@@ -55,9 +55,10 @@ async function getCoronaData(stats, userSelection){
         updateGraph();
 
 
-        
+        outcomeArea.innerHTML = '<p style="text-align: center; color: white;"><b>The result of the query is shown below!</b></p>';
     } catch(error) {
-        coronaTrackerArea.innerHTML = `<p style="text-align: center; color: white;"><b>No results found!</b></p>`
+        document.querySelector(".coronaTracker").style.display = "none";
+        outcomeArea.innerHTML = `<p style="text-align: center; color: white;"><b>No results found!</b></p>`
         console.log(error);
     }
 }
@@ -131,8 +132,8 @@ function drawTable(results, userSelection){
 
     
 
-    cTableElement.innerHTML = '<p>The results of the query are shown below!</p>';
-    cTableElement.innerHTML +=
+    
+    cTableElement.innerHTML =
     `
     <h2>${userSelection}</h2>
     <hr style="border: 2px solid white;">
