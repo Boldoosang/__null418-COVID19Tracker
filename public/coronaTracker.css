@@ -96,3 +96,8 @@
   
   .dropdownmenu:hover .dropbutn {background-color: #46fca1;}
 
+  .coronaMapRegion {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }

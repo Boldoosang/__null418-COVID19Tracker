@@ -1,6 +1,4 @@
 window.addEventListener("resize", drawRegionsMap);
-window.addEventListener("onload", drawRegionsMap);
-
 
 
 let stats = "https://pomber.github.io/covid19/timeseries.json";
@@ -394,17 +392,20 @@ function drawRegionsMap() {
 
     let options = {
         region: selectedCountryCode,
-        colorAxis: {colors: ['#00853f', 'orange', "#e31b23", "red"]},
+        width: $('#coronaMapRegion').width(),
+        colorAxis: {colors: ['#00853f', "yellow" ,"yellow", 'orange', "orange", "#e31b23", "red", "red","red","red"]},
         displayMode: "region",
         backgroundColor: "black"
     };
 
     let chart = new google.visualization.GeoChart(document.querySelector('.coronaMapRegion'));
 
+    document.querySelector('.coronaMapRegion').style.border = "2px dotted white";
+    document.querySelector('.coronaMapRegion').style.width = "99%";
     chart.draw(data, options);
-    document.querySelector('.coronaMapRegion').style.border = "2px solid black";
-    document.querySelector('.coronaMapRegion').style.height = "80vh";
+    
 }
+
 //END DRAW WORLD REGION MAP
 
 document.addEventListener("DOMContentLoaded", ()=> {
