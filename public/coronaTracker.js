@@ -344,7 +344,8 @@ let coronaPie = new Chart(coronaPieContext, {
                 fontColor: "#FFFFFF",
                 fontFamily:"'Share Tech Mono', monospace",
                 fontSize: 18,
-            },
+                padding: 35
+            }
         },
         title: {
             display: true,
@@ -374,7 +375,11 @@ google.charts.setOnLoadCallback(drawRegionsMap);
 //DRAW WORLD REGION MAP
 function drawRegionsMap() {
     let data = formattedData.heatmap;
-
+    let mapTitle = document.querySelector(".map");
+    mapTitle.innerHTML = 
+    `
+    <h3>Map of ${userSelection}</h3>
+    `
     data = google.visualization.arrayToDataTable(data);
 
     let options = {

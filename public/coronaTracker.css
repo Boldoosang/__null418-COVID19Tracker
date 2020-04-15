@@ -50,6 +50,16 @@
     display: none;
 }
 
+.map{
+    text-align:center;
+    text-transform: uppercase;
+    font-family:'Share Tech Mono', monospace;
+    line-height:2.5;
+    color:#66FCF1;
+    font-weight:600;
+    margin-bottom: 30px;
+}
+
 .dropbutn {
     background-color: #66fcf1;
     color: black;
