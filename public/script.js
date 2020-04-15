@@ -25,7 +25,7 @@
     
     let a = event.target.innerText;
 
-    navigate(a, "coronaTracker.html");
+    navigate(a, "coronaPage.html");
   }
   
   function handleClick1(event){
