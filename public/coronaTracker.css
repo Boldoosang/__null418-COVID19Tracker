@@ -63,6 +63,9 @@
     padding-top: 30px;
 }
 
+hr{
+    border-top: 2px solid white;
+}
 .dropbutn {
     background-color: #66fcf1;
     color: black;

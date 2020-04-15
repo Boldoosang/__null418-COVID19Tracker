@@ -313,7 +313,8 @@ let coronaGraph = new Chart(coronaGraphContext, {
                 },
                 ticks: {
                     beginAtZero: false,
-                    min: 0
+                    min: 0,
+                    fontColor:"#C5C6C7"
                 }
             }],
             xAxes: [{
@@ -325,7 +326,8 @@ let coronaGraph = new Chart(coronaGraphContext, {
                     fontColor:"#C5C6C7",
                 },
                 ticks: {
-                    reverse: true
+                    reverse: true,
+                    fontColor:"#C5C6C7"
                 }
             }]
         }

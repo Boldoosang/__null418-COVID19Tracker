@@ -66,6 +66,10 @@ main {
     padding: 50px;
 }
 
+picture {
+    padding-top : 30px;
+}
+
 .nav-wrapper{
     margin-top: 10px;
     background-color: #0b0c10;
