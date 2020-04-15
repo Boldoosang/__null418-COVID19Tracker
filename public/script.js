@@ -56,3 +56,8 @@
   menu2.addEventListener('click', handleClick2, false);
 
 window.onload=handleClick1;
+
+document.addEventListener('DOMContentLoaded', function() {
+  let elems = document.querySelectorAll('select');
+  let instances = M.FormSelect.init(elems, options);
+});

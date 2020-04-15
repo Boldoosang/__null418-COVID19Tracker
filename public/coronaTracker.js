@@ -1,6 +1,5 @@
 window.addEventListener("resize", drawRegionsMap);
-window.addEventListener("load", drawRegionsMap);
-
+load = drawRegionsMap;
 
 let stats = "https://pomber.github.io/covid19/timeseries.json";
 let countryList = "https://raw.githubusercontent.com/pomber/covid19/master/docs/countries.json";
@@ -25,7 +24,7 @@ let coronaTrackerArea = document.querySelector(".coronaTracker");
 let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
 //TESTING
-let userSelection = "Trinidad and Tobago";
+let userSelection = "World";
 
 //GET CORONA RESULTS AND CORONA COUNTRIES
 async function getCoronaData(stats, userSelection){
@@ -35,9 +34,6 @@ async function getCoronaData(stats, userSelection){
 
         response = await fetch(countryList);
         countries = await response.json();
-
-        //console.log(results);
-        //console.log(countries);
 
         arrangeData(results);
         getWorldData(results, userSelection);
@@ -335,6 +331,8 @@ let coronaGraph = new Chart(coronaGraphContext, {
 let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d');
 coronaPieContext.canvas.width = document.documentElement.clientWidth;
 coronaPieContext.canvas.height = document.documentElement.clientHeight;
+
+
 let coronaPie = new Chart(coronaPieContext, {
     type: 'pie',
     data: {
@@ -388,6 +386,9 @@ google.charts.setOnLoadCallback(drawRegionsMap);
 //DRAW WORLD REGION MAP
 function drawRegionsMap() {
     let data = formattedData.heatmap;
+
+    let mapTitle = document.querySelector(".map");
+    mapTitle.innerHTML = `Map of ${userSelection}`;
 
     data = google.visualization.arrayToDataTable(data);
 
