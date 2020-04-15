@@ -137,7 +137,7 @@ function drawTable(results, userSelection){
     
     cTableElement.innerHTML =
     `
-    <hr style="border: 2px solid white; min-width: 100%;">
+    <hr style="border: 2px solid white; min-width: 1000px;">
     <table class="centered" id="coronaTableHeader">
         <tr>
             <td><b>Date</b></td>
