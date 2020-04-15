@@ -1,6 +1,8 @@
 window.addEventListener("resize", drawRegionsMap);
 window.addEventListener("onload", drawRegionsMap);
 
+
+
 let stats = "https://pomber.github.io/covid19/timeseries.json";
 let countryList = "https://raw.githubusercontent.com/pomber/covid19/master/docs/countries.json";
 let countries;
@@ -17,14 +19,14 @@ let formattedData = {
     heatmap: [["Country","Infected"]]
 };
 
-let worldResults = [];
+let worldResults = {World: []};
 
 
 let coronaTrackerArea = document.querySelector(".coronaTracker");
 let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
 //TESTING
-let userSelection = "world";
+let userSelection = "Trinidad and Tobago";
 
 //GET CORONA RESULTS AND CORONA COUNTRIES
 async function getCoronaData(stats, userSelection){
@@ -104,8 +106,13 @@ function getWorldData(results){
             recovered : regionTotalRecovered
         }
 
-        worldResults.push(statsObject);
+        worldResults.World.push(statsObject);
     }
+
+
+    Object.assign(results, worldResults);
+
+
 }
 
 
@@ -113,6 +120,7 @@ function getWorldData(results){
 
 //DRAW TABLE
 function drawTable(results, userSelection){
+    console.log(userSelection);
     console.log(`Country: ${userSelection}`);
     console.log(`Date: ${results[userSelection][0].date}`);
     console.log(`Confirmed: ${results[userSelection][0].confirmed}`);
@@ -168,6 +176,7 @@ function drawTable(results, userSelection){
 
 //FORMAT DATA FOR GRAPH
 function formatData(results, countries, selectedCountry){
+    
     for(let item in formattedData){
         formattedData['date'].pop();
         formattedData['deaths'].pop();
@@ -176,6 +185,7 @@ function formatData(results, countries, selectedCountry){
         formattedData['piechart'].pop();
     }
 
+    
     for(let item in results[selectedCountry]){
         let formattedDate = Date.parse(results[selectedCountry][item].date);
         formattedDate = new Intl.DateTimeFormat("en-TT", globalDateFormat).format(formattedDate);
@@ -186,7 +196,7 @@ function formatData(results, countries, selectedCountry){
         formattedData['recovered'].push(results[selectedCountry][item].recovered);
         
     }
-
+    
     let confirmedCases;
     let confirmedCountryCode;
     for (let currentCountry in countries){
@@ -202,8 +212,13 @@ function formatData(results, countries, selectedCountry){
     formattedData['piechart'].push(formattedData['deaths'][0]);
     formattedData['piechart'].push(formattedData['recovered'][0]);
 
-    formattedData.country = selectedCountry;
-    selectedCountryCode = countries[userSelection].code;
+
+    console.log(selectedCountry);
+
+    if(selectedCountry != "World") {
+        formattedData.country = selectedCountry;
+        selectedCountryCode = countries[userSelection].code;
+    }
 }
 
 //END FORMAT DATA FOR GRAPH
@@ -344,8 +359,7 @@ let coronaPie = new Chart(coronaPieContext, {
                 fontColor: "#FFFFFF",
                 fontFamily:"'Share Tech Mono', monospace",
                 fontSize: 18,
-                padding: 35
-            }
+            },
         },
         title: {
             display: true,
@@ -375,11 +389,7 @@ google.charts.setOnLoadCallback(drawRegionsMap);
 //DRAW WORLD REGION MAP
 function drawRegionsMap() {
     let data = formattedData.heatmap;
-    let mapTitle = document.querySelector(".map");
-    mapTitle.innerHTML = 
-    `
-    <h3>Map of ${userSelection}</h3>
-    `
+
     data = google.visualization.arrayToDataTable(data);
 
     let options = {
@@ -403,4 +413,3 @@ document.addEventListener("DOMContentLoaded", ()=> {
 })
 
 let loadCoronaTracker = document.querySelector('#updateG');
-onload = updateGraph();
