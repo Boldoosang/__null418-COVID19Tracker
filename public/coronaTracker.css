@@ -172,8 +172,12 @@ hr{
 }
 
 @media only screen and (max-width : 1000px){
-    .coronaTracker h2, .outcome{
+    .coronaTracker h2 {
         font-size: 0.7em;
+    }
+
+    .outcome{
+        font-size: 0.8em;
     }
 
     .tableTitle:after {

@@ -59,7 +59,7 @@ async function getCoronaData(stats, userSelection){
 
 
         outcomeArea.innerHTML = `<p style="text-align: center; color: #99E689;"><b>The result of the query is shown below!</b></p><br>
-        <p style="color: #FFBE33; font-size: 0.7em; text-align: center;">*On lower bandwidth connections, it may be necessary to hit the submit button again if the data has not completely loaded.</p><hr class="segmentedGraphs">`;
+        <p style="color: #FFBE33; font-size: 0.9em; text-align: left; margin: 0 20px;">*On lower bandwidth connections, it may be necessary to hit the submit button again if the data has not completely loaded*</p><hr class="segmentedGraphs">`;
     } catch(error) {
         document.querySelector(".coronaTracker").style.display = "none";
         outcomeArea.innerHTML = `<p style="text-align: center; color: #FFA3A3;"><b>No results found!</b></p>`
@@ -379,11 +379,11 @@ google.charts.load('current', {'packages':['geochart']});
 google.charts.setOnLoadCallback(drawRegionsMap);
 
 let graphTitle = document.querySelector(".graphTitle");
-graphTitle.innerHTML = `<h2>CORONA VIRUS STATISTICAL LINE GRAPH</h2>`;
+graphTitle.innerHTML = `<h2>COVID-19 REGION LINE GRAPH</h2>`;
 
 
 let chartTitle = document.querySelector(".chartTitle");
-chartTitle.innerHTML = `<hr class="segmentedGraphs"><h2>CORONA VIRUS STATISTICAL PIE CHART</h2>`;
+chartTitle.innerHTML = `<hr class="segmentedGraphs"><h2>COVID-19 REGION PIE CHART</h2>`;
 
 //DRAW WORLD REGION MAP
 function drawRegionsMap() {
@@ -391,7 +391,7 @@ function drawRegionsMap() {
 
     try {
         let mapTitle = document.querySelector(".mapTitle");
-        mapTitle.innerHTML = `<hr class="segmentedGraphs"><h2>CORONA HEATMAP OF ${userSelection}</h2>`;
+        mapTitle.innerHTML = `<hr class="segmentedGraphs"><h2>COVID-19 HEATMAP:<br> ${userSelection}</h2>`;
     } catch(error){
         console.log(error);
         console.log("Wrong map selected");
