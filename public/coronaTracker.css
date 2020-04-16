@@ -122,6 +122,7 @@ hr{
 .coronaLineGraph {
     height: 100vh;
     width: auto;
+    min-height: 100vh;
 }
 
 .coronaTableCountry {
