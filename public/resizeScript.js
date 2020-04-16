@@ -1,4 +1,5 @@
 let cBut;
+let height = 0;
 
 console.log("Gotten!");
 
@@ -9,10 +10,15 @@ $(document).ready(function(){
         html = document.documentElement;
 
         setTimeout(function(){
-            let height = Math.max(body.scrollHeight, body.offsetHeight, 
-                html.clientHeight, html.scrollHeight, html.offsetHeight );
-        
-                console.log(height);
+            height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+                
+            console.log(height);
         }, 500)
     })
+
+    console.log(height);
+
+    function getHeight() {
+        return height;
+    }
 })

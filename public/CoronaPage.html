@@ -11,27 +11,35 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
-        .container {
-            width: 100%;
-        }
-
-        main {
-            border: none;
-        }
-        iframe{
-            min-width: 100%;
-        }
+        .container {width: 100%;}
+        main {border: none;}
+        iframe{min-width: 100%;}
 
     </style>
 </head>
     <body>
         
-            <iframe id="iFrame1" frameborder="1" src="coronaTracker.html" onload="resizeIframe(this)" scrolling="yes" ></iframe>
+            <iframe id="iFrame1" frameborder="1" src="coronaTracker.html" scrolling="yes" onLoad="calcIframeHeight();window.scroll(0,0);"></iframe>
+
+            <iframe id="myframe" src="coronaTracker.html" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" style="overflow:visible; width:100%; display:none"></iframe>
             
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
             <script>
-                function resizeIframe(obj) {
+                window.onload = loaded();
+                
+                function loaded(){
                     console.log("Called");
                     $.getScript("resizeScript.js");
+                    
+                    let ciFrame = document.querySelector("#iFrame1");
+                    
+                    ciframe.style.height = "2000px";
+
+                    console.log(ciFrame);
+                    //.addEventListener("load", function(){
+                    console.log("Hello World!");
+
+                    console.log(getHeight());
                     obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
                 }
             </script>
