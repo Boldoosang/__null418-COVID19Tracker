@@ -37,7 +37,7 @@ main {
     border-radius: 5px;
     min-height: 100%;
 }
-.homeData , .measuresData{
+.contentData{
     padding: 25px;
 }
 
