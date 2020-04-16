@@ -256,7 +256,7 @@ function writeCountryData(currentCountry, n, cCode){
 //CORONA LINE GRAPH
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
 //coronaGraphContext.canvas.width = document.documentElement.clientWidth;
-coronaGraphContext.canvas.height = document.documentElement.clientHeight/4;
+coronaGraphContext.canvas.height = document.documentElement.clientHeight/2;
 let coronaGraph = new Chart(coronaGraphContext, {
     type: 'line',
     data: {
@@ -334,7 +334,7 @@ let coronaGraph = new Chart(coronaGraphContext, {
 
 let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d');
 //coronaPieContext.canvas.width = document.documentElement.clientWidth;
-//coronaPieContext.canvas.height = document.documentElement.clientHeight;
+coronaPieContext.canvas.height = document.documentElement.clientHeight/3;
 
 
 let coronaPie = new Chart(coronaPieContext, {
@@ -403,13 +403,13 @@ function drawRegionsMap() {
         width: $('#coronaMapRegion').width(),
         colorAxis: {colors: ["green","yellow","yellow","red","red","red","red","red","red","red","red","red","red",]},
         displayMode: "region",
-        backgroundColor: "black"
+        backgroundColor: "#1f2833"
     };
 
     let chart = new google.visualization.GeoChart(document.querySelector('.coronaMapRegion'));
-
-    document.querySelector('.coronaMapRegion').style.border = "2px dotted white";
     document.querySelector('.coronaMapRegion').style.width = "99%";
+    document.querySelector('.coronaMapRegion').style.height = "600px";
+
     chart.draw(data, options);
     
 }
