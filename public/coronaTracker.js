@@ -117,6 +117,7 @@ let cMapRegion = coronaTrackerArea.querySelector(".coronaMapRegion");
 
 //Due to the nature of the endpoint data, it was necessary to reverse the contents to get the order: most recent to most oldest.
 function arrangeData(results){
+    console.log(results);
     //For every country in results, access the country and reverse the array.
     for (let tempCountry in results) 
         results[tempCountry].reverse();
