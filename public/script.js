@@ -55,6 +55,7 @@
   const menu2 = document.querySelector('#measures');
   menu2.addEventListener('click', handleClick2, false);
 
+
 window.onload = function() {
   event.preventDefault();
   event.stopPropagation();
