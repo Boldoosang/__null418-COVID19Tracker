@@ -9,7 +9,7 @@ body {
     min-height: 95vh;
     min-width: 95vw;
     text-align: justify;
-    line-height: 2;
+    line-height: 1.9;
 }
 
 #dropdownNav li {
