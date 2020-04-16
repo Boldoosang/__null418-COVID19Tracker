@@ -58,10 +58,11 @@ async function getCoronaData(stats, userSelection){
         updateGraph();
 
 
-        outcomeArea.innerHTML = '<p style="text-align: center; color: white;"><b>The result of the query is shown below!</b><br><hr class="segmentedGraphs"></p>';
+        outcomeArea.innerHTML = `<p style="text-align: center; color: #99E689;"><b>The result of the query is shown below!</b></p><br>
+        <p style="color: #FFBE33; font-size: 0.7em; text-align: center;">*On lower bandwidth connections, it may be necessary to hit the submit button again if the data has not completely loaded.</p><hr class="segmentedGraphs">`;
     } catch(error) {
         document.querySelector(".coronaTracker").style.display = "none";
-        outcomeArea.innerHTML = `<p style="text-align: center; color: white;"><b>No results found!</b></p>`
+        outcomeArea.innerHTML = `<p style="text-align: center; color: #FFA3A3;"><b>No results found!</b></p>`
         console.log(error);
     }
 }

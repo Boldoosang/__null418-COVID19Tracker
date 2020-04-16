@@ -28,7 +28,7 @@ body {
 }
 main {
     flex: 1 0 auto;
-    background-color: rgba(197,198,199,0.6);
+    background-color: rgba(197,198,199,0.7);
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 0px;
@@ -111,6 +111,11 @@ h4{
 
 footer {
     bottom: 0;
+}
+
+footer a:hover, .sidenav a:hover{
+    color: #0c79ed !important;
+    transition-duration: 0.5s;
 }
 
 .nav-wrapper li:hover > #dropdownNav {

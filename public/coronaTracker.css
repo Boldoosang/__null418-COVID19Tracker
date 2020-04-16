@@ -8,7 +8,7 @@
     text-align:center;
     text-transform: uppercase;
     line-height:2.5;
-    color:#66FCF1;
+    color:white;
     font-weight:600;
     font-size: 1.5em !important;
 }
@@ -37,7 +37,7 @@
 
 .coronaTableCountry #coronaTableHeader{
     background-color:#0B0C10;
-    color:#66FCF1;
+    color:white;
 }
 
 .coronaTableCountry {
@@ -62,9 +62,15 @@
     font-family:'Share Tech Mono', monospace;
     line-height:2.5;
     letter-spacing: 2px;
-    color:#66FCF1;
+    color: #8DBBF6;
     font-weight:600;
-    font-size: 1.5em;
+    font-size: 1.7em;
+}
+
+.mapTitle:hover, .graphTitle:hover, .chartTitle:hover, .tableTitle:hover{
+    color: white;
+    transition-duration: 0.5s;
+    cursor: pointer;
 }
 
 hr{
@@ -171,8 +177,9 @@ hr{
     }
 
     .tableTitle:after {
+        font-family: 'Roboto', monospace;
         content: "<- Mobile Scrollable ->";
-        font-size: 16px;
+        font-size: 0.3em;
     }
 
     .coronaTableCountry {
