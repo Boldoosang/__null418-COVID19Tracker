@@ -1,18 +1,25 @@
+/*
+INFO 1601
+Justin Baldeosingh Corona Tracker
+__null418
+Made 95% from scratch apart from APIs.
+*/
+
+//The region map is redrawn each time the user resizes the page.
 window.addEventListener("resize", drawRegionsMap);
-load = drawRegionsMap;
-
-//TESTING
 
 
-
-
-
+//Global Variable declaration and initialization.
+//Stores the endpoint for which all of the data for the application will be used.
 let stats = "https://pomber.github.io/covid19/timeseries.json";
 let countryList = "https://raw.githubusercontent.com/pomber/covid19/master/docs/countries.json";
 let countries;
 let results;
+let userSelection;
 let selectedCountry;
 let selectedCountryCode;
+
+//Creates an object to store the formatted data once it has been parsed for the charts API and maps API.
 let formattedData = {
     country: 0,
     date: [],
@@ -23,23 +30,33 @@ let formattedData = {
     heatmap: [["Country","Infected"]]
 };
 
+//Gets the div element that will be used to load the visualizers.
 let coronaTrackerArea = document.querySelector(".coronaTracker");
+
+//Declares the format in which dates will be stored for the application.
 let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
-let userSelection;
+//Once the javascript file has loaded, draw the map.
+load = getCoronaData(stats);
 
-//NEEDS TO BE TRIGGERED BY SOMETHING
+
+//Triggered when the user hits the submit button and begins the loading of the data with the user's selection.
 function getUserSelection(){
+    //Gets the value of the list element that has been chosen by the user.
     let sel = document.getElementById("coronaCountry").value;
     userSelection = sel;
     console.log(`User Selected: ${userSelection}`); //Debug
-    getCoronaData(stats, userSelection);
+
+    //
+    processSelection(results, userSelection);
 }
 
-let outcomeArea = document.querySelector(".outcome");
+
 //GET CORONA RESULTS AND CORONA COUNTRIES
-async function getCoronaData(stats, userSelection){
+async function getCoronaData(stats){
+    let outcomeArea = document.querySelector(".outcome");
     try {
+        outcomeArea.innerHTML = `<p style="text-align: center; color: #d69200;"><b>Please wait, data is being fetched...</b></p>`
         let response = await fetch(stats);
         results = await response.json();
 
@@ -47,24 +64,28 @@ async function getCoronaData(stats, userSelection){
         countries = await response.json();
 
         arrangeData(results);
-        getWorldData(results, userSelection);
+        getWorldData(results);
+        outcomeArea.innerHTML = `<p style="text-align: center; color: #00d123;"><b>Data fetched!</b></p>`
+    } catch(error) {
+        document.querySelector(".coronaTracker").style.display = "none";
+        outcomeArea.innerHTML = `<p style="text-align: center; color: #FFA3A3;"><b>Unable to fetch data from endpoint!</b></p>`
+        console.log(error);
+    }
+}
 
-        drawTable(results, userSelection);
+function processSelection(results, userSelection){
+    let outcomeArea = document.querySelector(".outcome");
+    try {
         formatData(results, countries, userSelection);
-
-        coronaGraph.update();
-        coronaPie.update();
-
         updateGraph();
-
-
         outcomeArea.innerHTML = `<p style="text-align: center; color: #99E689;"><b>The result of the query is shown below!</b></p><br>
         <p style="color: #FFBE33; font-size: 0.9em; text-align: left; margin: 0 20px;">*On lower bandwidth connections, it may be necessary to hit the submit button again if the data has not completely loaded*</p><hr class="segmentedGraphs">`;
     } catch(error) {
         document.querySelector(".coronaTracker").style.display = "none";
-        outcomeArea.innerHTML = `<p style="text-align: center; color: #FFA3A3;"><b>No results found!</b></p>`
+        outcomeArea.innerHTML = `<p style="text-align: center; color: #FFA3A3;"><b>No data on selected country.</b></p>`
         console.log(error);
     }
+
 }
 
 
@@ -214,7 +235,7 @@ function formatData(results, countries, selectedCountry){
             confirmedCases =  parseInt(results[currentCountry][0].confirmed);
             confirmedCountryCode = countries[currentCountry].code;
         } catch(error) {
-            console.log(error);
+            void(0);
         }
 
         writeCountryData(currentCountry, confirmedCases, confirmedCountryCode);
@@ -370,6 +391,7 @@ let coronaPie = new Chart(coronaPieContext, {
 //UPDATES GRAPHS AND CHARTS
 function updateGraph(){
     document.querySelector('.coronaTracker').style.display = "block";
+    drawTable(results, userSelection);
     coronaPie.update();
     coronaGraph.update();
     drawRegionsMap();

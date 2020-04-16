@@ -57,4 +57,3 @@ window.onload = function() {
 
   navigate("HOME", "homepage.html");
 };
-
