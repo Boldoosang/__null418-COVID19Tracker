@@ -13,6 +13,10 @@
     font-size: 1.5em !important;
 }
 
+#countrySelectLabel {
+    padding-top: 20px;
+}
+
 .coronaTableCountry p{
     text-align:center;
     margin-top:10px;
