@@ -109,16 +109,15 @@ function processSelection(results, userSelection){
 }
 
 
-//CORONA RESULT ELEMENTS
+//Gets the elements that are to be populated upon update.
 let cTableElement = coronaTrackerArea.querySelector(".coronaTableCountry");
 let cPieElement = coronaTrackerArea.querySelector(".coronaPieChart");
 let cMapWorld = coronaTrackerArea.querySelector(".coronaMapWorld");
 let cMapRegion = coronaTrackerArea.querySelector(".coronaMapRegion");
-//END CORONA RESULT ELEMENTS
 
-//ARRANGE DATA NEW TO OLD
-
+//Due to the nature of the endpoint data, it was necessary to reverse the contents to get the order: most recent to most oldest.
 function arrangeData(results){
+    //For every country in results, access the country and reverse the array.
     for (let tempCountry in results) 
         results[tempCountry].reverse();
 }
