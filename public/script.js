@@ -66,6 +66,6 @@
 window.onload = function() {
   event.preventDefault();
   event.stopPropagation();
-
+  
   navigate("HOME", "homepage.html");
 };
