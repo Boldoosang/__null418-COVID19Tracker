@@ -256,7 +256,7 @@ function writeCountryData(currentCountry, n, cCode){
 //CORONA LINE GRAPH
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
 //coronaGraphContext.canvas.width = document.documentElement.clientWidth;
-//coronaGraphContext.canvas.height = document.documentElement.clientHeight;
+coronaGraphContext.canvas.height = document.documentElement.clientHeight/4;
 let coronaGraph = new Chart(coronaGraphContext, {
     type: 'line',
     data: {

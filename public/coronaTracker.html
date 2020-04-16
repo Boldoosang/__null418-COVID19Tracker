@@ -223,6 +223,20 @@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script id="scriptCorona" src="coronaTracker.js"></script>
     <script src="resizeScript.js"></script>
-    
+    <script>
+        $(document).ready(function(){
+    cBut = document.querySelector("#coronaSubmit-btn");
+    cBut.addEventListener("click", function (){
+        let body = document.body,
+        html = document.documentElement;
+
+        setTimeout(function(){
+            parent.iframeLoaded();
+        
+
+             }, 500)
+            })
+        })
+    </script>
 </body>
 </html>

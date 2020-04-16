@@ -17,6 +17,7 @@
 
         main {
             border: none;
+
         }
         iframe{
             min-width: 100%;
@@ -26,14 +27,8 @@
 </head>
     <body>
         
-            <iframe id="iFrame1" frameborder="1" src="coronaTracker.html" onload="resizeIframe(this)" scrolling="yes" ></iframe>
+            <iframe id="iFrame1" frameborder="0" src="coronaTracker.html" onload="iframeLoaded()" scrolling="no" height="800px"></iframe>
             
-            <script>
-                function resizeIframe(obj) {
-                    console.log("Called");
-                    $.getScript("resizeScript.js");
-                    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-                }
-            </script>
+            <script src="resizescript.js"></script>
     </body>
 </html>
