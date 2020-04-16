@@ -118,6 +118,10 @@ footer a:hover, .sidenav a:hover{
     transition-duration: 0.5s;
 }
 
+.navLogo {
+    cursor: pointer;
+}
+
 .nav-wrapper li:hover > #dropdownNav {
     display: flex;
     flex-direction: column;
