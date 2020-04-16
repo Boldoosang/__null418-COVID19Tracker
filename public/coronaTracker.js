@@ -164,7 +164,7 @@ function drawTable(results, userSelection){
 
         let displayDate = Intl.DateTimeFormat("en-TT", globalDateFormat).format(resultDate);
 
-        previousDay = {...selectedCountry[day+1]}
+        previousDay = Object.assign({},selectedCountry[day+1])
 
         cTableElement.innerHTML += 
         `
@@ -213,7 +213,9 @@ function formatData(results, countries, selectedCountry){
         try {
             confirmedCases =  parseInt(results[currentCountry][0].confirmed);
             confirmedCountryCode = countries[currentCountry].code;
-        } catch {}
+        } catch(error) {
+            console.log(error);
+        }
 
         writeCountryData(currentCountry, confirmedCases, confirmedCountryCode);
     }
@@ -257,7 +259,7 @@ function writeCountryData(currentCountry, n, cCode){
 //CORONA LINE GRAPH
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
 //coronaGraphContext.canvas.width = document.documentElement.clientWidth;
-coronaGraphContext.canvas.height = document.documentElement.clientHeight/2;
+coronaGraphContext.canvas.height = document.documentElement.clientHeight/3;
 let coronaGraph = new Chart(coronaGraphContext, {
     type: 'line',
     data: {

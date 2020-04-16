@@ -3,10 +3,6 @@
     var instances = M.Sidenav.init(elems, {});
   });
 
-  $(document).ready(function(){
-    $('.materialboxed').materialbox();
-    });
-
   async function navigate(title, url){
     document.title = "__null418 COVID19 - " + title;
     let content = document.querySelector('#content');
