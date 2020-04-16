@@ -59,6 +59,10 @@ main {
     margin-top: 10px;
 }
 
+.coronaGraph, .coronaChart, .coronaMapRegion, .coronaTableCountry{
+    box-shadow: 0 4px 12px 0 black;
+}
+
 .branding {
     background-color: #0b0c10;
     display: flex;
