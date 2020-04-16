@@ -19,23 +19,48 @@
     <style>
         p{
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 500;
             font-family: 'Share Tech Mono', monospace;;
+        }
+        hr{
+            border: 2px solid black;
+            width:100%;
+        }
+        .speech-bubble{
+            width:400px;
+        }
+        .speech-bubble, .text{
+            width:100%;
+            margin-bottom:20px;
+        }
+        .speech-bubble, .text p{
+            margin: 0 0 10px 0;
+        }
+        .bubble{
+            position:relative;
+            background:white;
+            padding:20px;
+            border-radius:400px;
         }
     </style>
 </head>
     <body>
         <div class="contentData">
+            <p><b>Chansey says:</b></p>
+            </br>
+            <hr>
+            </br>
+            <div class="speech-bubble">
+                <div class="text bubble">
+                     <p>Stay at home, prevent the spread!</p>
+                </div>
+            </div>
             <picture style="display: flex; justify-content: center;">
-                <img class="responsive-img" src="chansey.png">
+                <img class="responsive-img" src="Chansey.gif">
             </picture>
             </br>
-            <p>Chansey says:</p>
-            </br>
-            <p>Stay at home</p>
-            </br>
-            <p>Prevent the spread</p>
+            
         </div>
         
     </body>
