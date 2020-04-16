@@ -47,50 +47,67 @@ function getUserSelection(){
     userSelection = sel;
     console.log(`User Selected: ${userSelection}`); //Debug
 
-    //
+    //Takes the user's selection and begins updating of tables and graphs.
     processSelection(results, userSelection);
 }
 
 
-//GET CORONA RESULTS AND CORONA COUNTRIES
+//Gets the corona results and countries from the URL.
 async function getCoronaData(stats){
+    //Stores the outcome notifier element.
     let outcomeArea = document.querySelector(".outcome");
     try {
+        //Fetches the results remote file from the stats url.
         let response = await fetch(stats);
+        //Converts/Parses the file to JSON.
         results = await response.json();
 
+        //Fetches the results remote file from the stats url.
         response = await fetch(countryList);
+        //Converts/Parses the file to JSON.
         countries = await response.json();
 
+        //Reorders the data from recent to oldest.
         arrangeData(results);
+        //Compiles data from all countries into 1 object and adds the object to the results object array.
         getWorldData(results);
+
+        //Notifies the user that the data was fetched without error.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #00d123;"><b>Data fetched!</b></p>`
     } catch(error) {
+        //If an error has occurred, hide the tracker.
         document.querySelector(".coronaTracker").style.display = "none";
+        //Notifies the user that the data was unable to be fetched.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #FFA3A3;"><b>Unable to fetch data from endpoint!</b></p>`
+        //Outputs the error to the console.
         console.log(error);
     }
 }
 
+//Accepts the results and user's selected country and begins updating the graphs and tables.
 function processSelection(results, userSelection){
+    //Stores the outcome notifier element.
     let outcomeArea = document.querySelector(".outcome");
     try {
+        //Inform the user that the data is being formatted.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #99E689;"><b>Formatting data... please wait.</b></p><br>`
+        //Formats the data and updates the tables and graphs.
         formatData(results, countries, userSelection);
         updateGraph();
+        //Inform the user that the data is ready to be viewed.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #99E689;"><b>The result of the query is shown below!</b></p><br>
         <p style="color: #FFBE33; font-size: 0.9em; text-align: left; margin: 0 20px;">*On lower bandwidth connections, it may be necessary to hit the submit button again if the data has not completely loaded*</p><hr class="segmentedGraphs">`;
     } catch(error) {
+        //If the country was not in the results list, hide the tracker.
         document.querySelector(".coronaTracker").style.display = "none";
+        //Notifies the user that no data was avaialable for the country.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #FFA3A3;"><b>No data on selected country.</b></p>`
+        //Outputs the error to the console.
         console.log(error);
     }
 
 }
 
-
-
-//END GET CORONA RESULTS AND CORONA COUNTRIES
 
 //CORONA RESULT ELEMENTS
 let cTableElement = coronaTrackerArea.querySelector(".coronaTableCountry");
