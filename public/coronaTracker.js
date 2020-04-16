@@ -56,7 +56,6 @@ function getUserSelection(){
 async function getCoronaData(stats){
     let outcomeArea = document.querySelector(".outcome");
     try {
-        outcomeArea.innerHTML = `<p style="text-align: center; color: #d69200;"><b>Please wait, data is being fetched...</b></p>`
         let response = await fetch(stats);
         results = await response.json();
 
@@ -76,6 +75,7 @@ async function getCoronaData(stats){
 function processSelection(results, userSelection){
     let outcomeArea = document.querySelector(".outcome");
     try {
+        outcomeArea.innerHTML = `<p style="text-align: center; color: #99E689;"><b>Formatting data... please wait.</b></p><br>`
         formatData(results, countries, userSelection);
         updateGraph();
         outcomeArea.innerHTML = `<p style="text-align: center; color: #99E689;"><b>The result of the query is shown below!</b></p><br>
