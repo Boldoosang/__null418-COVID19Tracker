@@ -129,12 +129,6 @@ hr{
     width: auto;
 }
 
-.coronaLineGraph {
-    height: 100vh;
-    width: auto;
-    min-height: 100vh;
-}
-
 .coronaTableCountry {
     overflow-x: auto;
 }

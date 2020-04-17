@@ -314,7 +314,6 @@ let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('
 //coronaGraphContext.canvas.width = document.documentElement.clientWidth;
 coronaGraphContext.canvas.height = document.documentElement.clientHeight/3;
 
-
 //Generates the corona line graph with formatted data.
 let coronaGraph = new Chart(coronaGraphContext, {
     type: 'line',
@@ -395,7 +394,7 @@ let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d'
 
 //Adjusts the size of the canvas based on device client.
 //coronaPieContext.canvas.width = document.documentElement.clientWidth;
-coronaPieContext.canvas.height = document.documentElement.clientHeight/3;
+coronaPieContext.canvas.height = document.documentElement.clientHeight/4;
 
 //Generates the corona pie chart with formatted data.
 let coronaPie = new Chart(coronaPieContext, {
