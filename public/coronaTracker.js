@@ -118,35 +118,37 @@ let cMapRegion = coronaTrackerArea.querySelector(".coronaMapRegion");
 //Due to the nature of the endpoint data, it was necessary to reverse the contents to get the order: most recent to most oldest.
 function arrangeData(results){
     console.log(results);
-    //For every country in results, access the country and reverse the array.
+    //For every country in results, reverse the country array.
     for (let tempCountry in results) 
         results[tempCountry].reverse();
 }
 
-//END ARRANGE DATA NEW TO OLD
 
-
-//GET REGION DATA
+//Compiles all of the countries data in results, creates a new object and adds the new object to results.
 function getWorldData(results){
-    let total;
+    //Initializes the totals to 0 and declares the worldResults object with the world array.
     let regionTotalConfirmed = 0;
     let regionTotalDeaths = 0;
     let regionTotalRecovered = 0;
     let worldResults = {World: []};
 
-    //Needed a random country to test the end of the array length.
+    //Iterates through all of the days in country results. The country "Trinidad and Tobago" was used as the control value to determine the number of 
+    //days data was collected for.
     for(let day = 0; day < results['Trinidad and Tobago'].length; day++){
-
+        //Resets the accumulating value for each country property to 0.
         regionTotalConfirmed = 0;
         regionTotalDeaths = 0;
         regionTotalRecovered = 0;
 
+        //For each country in results, accumulate each property values into a total.
         for (let region in results){
             regionTotalConfirmed += results[region][day].confirmed;
             regionTotalDeaths += results[region][day].deaths;
             regionTotalRecovered += results[region][day].recovered;
         }
 
+        //Creates a new object from the accumulated values. 
+        //Trinidad was used as the control to determine the iterating date.
         let statsObject = {
             date : results['Trinidad and Tobago'][day].date,
             confirmed : regionTotalConfirmed,
@@ -154,29 +156,30 @@ function getWorldData(results){
             recovered : regionTotalRecovered
         }
 
+        //Pushes the accumulated values for each day into the world array within worldResults.
         worldResults.World.push(statsObject);
     }
 
+    //Adds the worldResults to the results global object.
     Object.assign(results, worldResults);
-
 }
 
 
-//END GET REGION DATA
-
-//DRAW TABLE
+//Draws the table to the div section given the results and the selected country.
 function drawTable(results, userSelection){
-    console.log(userSelection);
-    console.log(`Country: ${userSelection}`);
-    console.log(`Date: ${results[userSelection][0].date}`);
-    console.log(`Confirmed: ${results[userSelection][0].confirmed}`);
-    console.log(`Deaths: ${results[userSelection][0].deaths}`);
-    console.log(`Recovered: ${results[userSelection][0].recovered}`);
+    // DEBUG PURPOSES
+    // console.log(userSelection);
+    // console.log(`Country: ${userSelection}`);
+    // console.log(`Date: ${results[userSelection][0].date}`);
+    // console.log(`Confirmed: ${results[userSelection][0].confirmed}`);
+    // console.log(`Deaths: ${results[userSelection][0].deaths}`);
+    // console.log(`Recovered: ${results[userSelection][0].recovered}`);
 
+    //Gets the table title element and prints the title of the table.
     let tableTitle = document.querySelector(".tableTitle");
     tableTitle.innerHTML = `<hr class="segmentedGraphs"><h2>DATA FOR ${userSelection}</h2>`;
 
-    
+    //Prints the headers to the table div.
     cTableElement.innerHTML =
     `
     <hr style="border: 2px solid white;">
@@ -192,18 +195,24 @@ function drawTable(results, userSelection){
     <hr style="border: 2px solid white;">
     `;
 
+    //Assigns the data of the user's selected country to selectedCountry.
     selectedCountry = results[userSelection];
 
-    let previousDay = 0;
+    //Declares the previous day object.
+    let previousDay;
 
+    //Iterates through all of the tracked days for the chosen country.
     for(let day = 0; day < selectedCountry.length; day++){
+        //Parses the date from the current date into epoch time.
         let dataDate = Date.parse(selectedCountry[day].date);
+        //A new date object is created with the epoch time.
         let resultDate = new Date(dataDate);
-
+        //The date to be displayed in the table is formatted.
         let displayDate = Intl.DateTimeFormat("en-TT", globalDateFormat).format(resultDate);
-
+        //The previous day is stored in the previous day object; The next array location is the previous day (since dates are stored from recent to oldest)
         previousDay = Object.assign({},selectedCountry[day+1])
 
+        //Appends the processed day entry to the table.
         cTableElement.innerHTML += 
         `
         <table class="centered" id="coronaDataTable">
@@ -220,12 +229,11 @@ function drawTable(results, userSelection){
     }
 }
 
-//END DRAW TABLE
 
-//FORMAT DATA FOR GRAPH
+//Formats the data from the results to match the format required by charts API and maps API.
 function formatData(results, countries, selectedCountry){
 
-
+    //Iterates through the number of days for the selected country in results and pops all of the previous data from the formatted data.
     for(let item = 0; item < results[selectedCountry].length; item++){
         formattedData.date.pop();
         formattedData.deaths.pop();
@@ -234,70 +242,80 @@ function formatData(results, countries, selectedCountry){
         formattedData.piechart.pop();
     }
     
+    //Iterates through all of the days within the selected country, formats the data and pushes the data into the formattedData array.
     for(let item in results[selectedCountry]){
+        //Parses and formats the date.
         let formattedDate = Date.parse(results[selectedCountry][item].date);
         formattedDate = new Intl.DateTimeFormat("en-TT", globalDateFormat).format(formattedDate);
-
+        //Pushes the data into the array.
         formattedData['date'].push(formattedDate);
         formattedData['deaths'].push(results[selectedCountry][item].deaths);
         formattedData['confirmed'].push(results[selectedCountry][item].confirmed);
         formattedData['recovered'].push(results[selectedCountry][item].recovered);
-        
     }
     
     let confirmedCases;
     let confirmedCountryCode;
+
+    //Iterates through all of the countries and writes the country data to the formatted data array.
     for (let currentCountry in countries){
+        //Try to parse the confirmed cases and country code of the current country.
         try {
             confirmedCases =  parseInt(results[currentCountry][0].confirmed);
             confirmedCountryCode = countries[currentCountry].code;
         } catch(error) {
+            //If an error was detected, do nothing.
             void(0);
         }
-
-        writeCountryData(currentCountry, confirmedCases, confirmedCountryCode);
+        //Writes the map data to the formatted data array.
+        writeCountryData(confirmedCases, confirmedCountryCode);
     }
 
+    //Pushes the most recent formatted data (as by array location 0), into the formatted pie chart section.
     formattedData['piechart'].push(formattedData['confirmed'][0]);
     formattedData['piechart'].push(formattedData['deaths'][0]);
     formattedData['piechart'].push(formattedData['recovered'][0]);
 
+    //If the selected country is not World, assign the name of the country to formatted data country and the country code to
+    //selected country code.
     if(selectedCountry != "World") {
         formattedData.country = selectedCountry;
         selectedCountryCode = countries[userSelection].code;
     }
 }
 
-//END FORMAT DATA FOR GRAPH
-
-//WRITE COUNTRY DATA TO ARRAY
-function writeCountryData(currentCountry, n, cCode){
-    let activeCountry;
+//Writes the heatmap data to formattedData.
+function writeCountryData(n, cCode){
     let tempCountryData = [];
 
     try {
+        //Empties the tempCountryData array.
         tempCountryData.pop();
         tempCountryData.pop();
 
-        let tempCode = cCode;
-        let tempConfirmed = n;
-
-        tempCountryData[0] = tempCode;
-        tempCountryData[1] = tempConfirmed;
+        //Assigns the data columns to the country code and number of cases.
+        tempCountryData[0] = cCode;
+        tempCountryData[1] = n;
         
-        if(tempConfirmed !== -1)
+        //If the number of cases is not -1 (No Data), push the data into the formattedData heatmap array.
+        if(n !== -1)
             formattedData.heatmap.push(tempCountryData);
     } catch(error) {
+        //If an error is encountered, log it.
         console.log(error);
     }
 
 }
-//END WRITE COUNTRY DATA TO ARRAY
 
-//CORONA LINE GRAPH
+//Gets the Line Graph canvas.
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
+
+//Adjusts the size of the canvas based on device client.
 //coronaGraphContext.canvas.width = document.documentElement.clientWidth;
 coronaGraphContext.canvas.height = document.documentElement.clientHeight/3;
+
+
+//Generates the corona line graph with formatted data.
 let coronaGraph = new Chart(coronaGraphContext, {
     type: 'line',
     data: {
@@ -326,8 +344,10 @@ let coronaGraph = new Chart(coronaGraphContext, {
         backgroundColor: 'rgba(255,255,255,0.5)',
         layout: {
             padding: {
-                top: 0,
-                bottom: 0
+                top: 5,
+                bottom: 5,
+                left: 30,
+                right: 5
             }
         },
         legend: {
@@ -369,15 +389,15 @@ let coronaGraph = new Chart(coronaGraphContext, {
         }
     }
 });
-//END CORONA LINE GRAPH
 
-//CORONA PIE CHART
-
+//Gets the Pie Chart canvas.
 let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d');
+
+//Adjusts the size of the canvas based on device client.
 //coronaPieContext.canvas.width = document.documentElement.clientWidth;
 coronaPieContext.canvas.height = document.documentElement.clientHeight/3;
 
-
+//Generates the corona pie chart with formatted data.
 let coronaPie = new Chart(coronaPieContext, {
     type: 'pie',
     data: {
@@ -403,57 +423,67 @@ let coronaPie = new Chart(coronaPieContext, {
     }
 });
 
-//END CORONA PIE CHART
-
 //UPDATES GRAPHS AND CHARTS
 function updateGraph(){
+    //Sets the result area to visible.
     document.querySelector('.coronaTracker').style.display = "block";
+    //Draws the table to its corresponding div.
     drawTable(results, userSelection);
+    //Updates the corona line graph and corona pie chart.
     coronaPie.update();
     coronaGraph.update();
+    //Draws the map to the screen.
     drawRegionsMap();
 }
 
 
-//GOOGLE GEO MAPS API
+//Loads the geocharts packages required for the map.
 google.charts.load('current', {'packages':['geochart']});
+
+//When the charts API is loaded, call the drawRegionsMap function.
 google.charts.setOnLoadCallback(drawRegionsMap);
 
+//Selects the graph title element and assigns the title to it.
 let graphTitle = document.querySelector(".graphTitle");
 graphTitle.innerHTML = `<h2>COVID-19 REGION LINE GRAPH</h2>`;
 
-
+//Selects the chart title element and assigns the title to it.
 let chartTitle = document.querySelector(".chartTitle");
 chartTitle.innerHTML = `<hr class="segmentedGraphs"><h2>COVID-19 REGION PIE CHART</h2>`;
 
-//DRAW WORLD REGION MAP
+//Draws the region map with the data in formattedData heatmap.
 function drawRegionsMap() {
     let data = formattedData.heatmap;
-
     try {
+        //Selects the map title element and prints the title of the map.
         let mapTitle = document.querySelector(".mapTitle");
         mapTitle.innerHTML = `<hr class="segmentedGraphs"><h2>COVID-19 HEATMAP:<br> ${userSelection}</h2>`;
+
+        //Converts the heatmap data to a data table.
+        data = google.visualization.arrayToDataTable(data);
     } catch(error){
+        //If an error has occurred, log the error.
         console.log(error);
         console.log("Wrong map selected");
     }
 
-    data = google.visualization.arrayToDataTable(data);
-    
+    //General options for map generation.
     let options = {
         region: selectedCountryCode,
+        //jQuery query selector used.
         width: $('#coronaMapRegion').width(),
         colorAxis: {colors: ["green","yellow","yellow","red","red","red","red","red","red","red","red","red","red",]},
         displayMode: "region",
         backgroundColor: "#1f2833"
     };
 
+    //Creates a new object chart for coronaMapRegion.
     let chart = new google.visualization.GeoChart(document.querySelector('.coronaMapRegion'));
-    document.querySelector('.coronaMapRegion').style.width = "99%";
+
+    //Sets the area of the graph.
+    document.querySelector('.coronaMapRegion').style.width = "100%";
     document.querySelector('.coronaMapRegion').style.height = "600px";
 
+    //Draws the map with the data and options on the chart object.
     chart.draw(data, options);
-    
 }
-
-//END DRAW WORLD REGION MAP
