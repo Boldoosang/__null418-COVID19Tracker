@@ -10,8 +10,8 @@
 
       <title>null418</title>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="materialize.min.css">
-      <link type="text/css" rel="stylesheet" href="style.css"/>
+      <link rel="stylesheet" type="text/css" href="styles/materialize.min.css">
+      <link type="text/css" rel="stylesheet" href="styles/style.css"/>
       <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
       <link rel="icon" href="favicon.ico" type="image/x-icon">
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -21,7 +21,9 @@
     <header>
       <div class="container">
             <div class="branding">
-              <a href="index.html"><img class= "center" id="logo" src="logo.gif"></a>
+              <a href="index.html">
+                  <img class= "center" id="logo" src="images/logo.gif">
+              </a>
             </div>
       </div>
       
@@ -33,7 +35,7 @@
             <div class="card-content" >
               <ul id="menu" class="black sidenav">
                 <li class="navLogo blue-grey darken-3" style="padding: 10px;">
-                  <img src="covid.png" style="padding: 20px; border: 2px dotted red;" class="circle responsive-img white">
+                  <img src="images/covid.png" style="padding: 20px; border: 2px dotted red;" class="circle responsive-img white">
                 </li>
                 <li>
                   <a id="homeButt" href="homepage.html" class= "black waves-effect waves-light btn-flat white-text"><b>HOME<i class="material-icons left">home</i></b></a>
@@ -42,7 +44,7 @@
                   <a id="measures" href="measures.html" class= "black waves-effect waves-light btn-flat white-text"><b>PREVENTATIVE MEASURES<i class="material-icons left">library_books</i></b></a>
                 </li>
                 <li>
-                  <a id="countries" href="coronaTracker.html" class= "waves-effect waves-light btn-flat white-text"><b>AFFECTED COUNTRIES<i class="material-icons left">language</i></b></a>
+                  <a id="countries" href="coronaPage.html" class= "waves-effect waves-light btn-flat white-text"><b>AFFECTED COUNTRIES<i class="material-icons left">language</i></b></a>
                 </li>
 
               </ul> 
@@ -93,20 +95,20 @@
           </div>
           <div class="row">
             <hr>
-            <img class="responsive-img teaPot" onclick="alert('Im a teapot :)'); navigate('Easter Egg :)', 'easterEgg.html');" alt="I'm a teapot" src="teapot.gif">
+            <img class="responsive-img teaPot" onclick="alert('Im a teapot :)'); navigate('Easter Egg :)', 'easterEgg.html');" alt="I'm a teapot" src="images/teapot.gif">
             <h5 class="grey-text text-lighten-2 right" style="padding: 10px; font-size: 1em;"><b>&copy; 2020 COPYRIGHT NULL418</b></h5>
           </div>
         </div>
       </div>
     </footer>
     
-    <script src="resizeScript.js"></script>
+    <script src="scripts/resizeScript.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="materialize.min.js"></script>
-    <script src="script.js"></script>
+    <script type="text/javascript" src="scripts/materialize.min.js"></script>
+    <script src="scripts/script.js"></script>
     <script src="/__/firebase/7.14.0/firebase-app.js"></script>
     <script src="/__/firebase/7.14.0/firebase-analytics.js"></script>
     <script src="/__/firebase/init.js"></script>

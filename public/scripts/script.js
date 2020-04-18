@@ -22,7 +22,7 @@
     
     let a = event.target.innerText;
 
-    navigate(a, "CoronaPage.html");
+    navigate(a, "coronaPage.html");
   }
 
   //replace default handling of click event with page redirect
