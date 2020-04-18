@@ -4,7 +4,7 @@ Justin Baldeosingh Corona Tracker
 __null418
 Made 95% from scratch apart from APIs.
 */
-
+ 
 //The region map is redrawn each time the user resizes the page.
 window.addEventListener("resize", drawRegionsMap);
 
