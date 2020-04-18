@@ -117,7 +117,6 @@ let cMapRegion = coronaTrackerArea.querySelector(".coronaMapRegion");
 
 //Due to the nature of the endpoint data, it was necessary to reverse the contents to get the order: most recent to most oldest.
 function arrangeData(results){
-    console.log(results);
     //For every country in results, reverse the country array.
     for (let tempCountry in results) 
         results[tempCountry].reverse();
@@ -241,7 +240,17 @@ function formatData(results, countries, selectedCountry){
         formattedData.recovered.pop();
         formattedData.piechart.pop();
     }
-    
+
+    for(let item = 0; item < results[selectedCountry].length; item++){
+        formattedData.heatmap.pop();
+        formattedData.heatmap.pop();
+        formattedData.heatmap.pop();
+        formattedData.heatmap.pop();
+        formattedData.heatmap.pop();
+    }
+
+    formattedData.heatmap.push(["Country","Infected"]);
+
     //Iterates through all of the days within the selected country, formats the data and pushes the data into the formattedData array.
     for(let item in results[selectedCountry]){
         //Parses and formats the date.
@@ -277,10 +286,13 @@ function formatData(results, countries, selectedCountry){
     formattedData['piechart'].push(formattedData['recovered'][0]);
 
     //If the selected country is not World, assign the name of the country to formatted data country and the country code to
-    //selected country code.
+    //selected country code else assign the country code to "world";
     if(selectedCountry != "World") {
         formattedData.country = selectedCountry;
         selectedCountryCode = countries[userSelection].code;
+    } else {
+        formattedData.country = "World";
+        selectedCountryCode = "world";
     }
 }
 
