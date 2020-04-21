@@ -100,6 +100,11 @@ h4{
     font-weight: 600;
 }
 
+h5{
+    text-align: center;
+    font-size: 26;
+    font-weight: 600;
+}
 .nav-wrapper{
     margin-top: 10px;
     background-color: #0b0c10;
