@@ -11,7 +11,7 @@ body {
     text-align: justify;
     line-height: 2;
 }
-
+ 
 #dropdownNav li {
     height: 100%;
     width: 100%;
@@ -46,8 +46,8 @@ main {
 }
 
 .contentData hr{
-    padding-top: 1px;
-    padding-bottom: 1px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     color:white;
     border:1px solid white;
 }
