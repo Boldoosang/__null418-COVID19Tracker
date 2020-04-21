@@ -1,12 +1,12 @@
-# __null418 - Corona Virus Tracker
-Welcome to our INFO 1601 Final Project! This project aims to provide a single page, dynamically loaded web applications for users who wish to obtain the latest information with regards to the Corona Virus. 
+# __null418 - Coronavirus Tracker
+Welcome to our INFO 1601 Final Project! This project aims to provide a single page, dynamically loaded web applications for users who wish to obtain the latest information with regards to the Coronavirus. 
 
 ## FEATURES
 The following is a list of features that are implemented into the developed web application:
-* Up to date corona virus statistics
-* Heatmaps that detail the regions with the most cases of the corona virus
+* Up to date coronavirus statistics
+* Heatmaps that detail the regions with the most cases of the coronavirus
 * Line graphs that show the growth in cases, deaths and recovered for each country
-* Tabular-displayed corona virus statistics
+* Tabular-displayed coronavirus statistics
 * Country based pie charts that show the proportion of cases, recovered and deaths
 * Mobile friendly and compatible design and layout
 * User friendly design
@@ -17,7 +17,7 @@ The following is a list of features that are implemented into the developed web 
 * [Chart.js](https://www.chartjs.org/) - Generating graphs and pie charts
 * [jQuery](https://jquery.com/) - Script functionality
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) - Heatmap visualizer
-* [COVID-19 data](https://github.com/pomber/covid19) - Corona virus data endpoint
+* [COVID-19 data](https://github.com/pomber/covid19) - Coronavirus data endpoint
 
 ## CONTRIBUTORS
 * [Boldoosang](https://github.com/Boldoosang/)
