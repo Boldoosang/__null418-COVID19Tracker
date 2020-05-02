@@ -1,5 +1,10 @@
 {
   "hosting": {
+    "redirects": [{
+        "source" : "/projectReport",
+        "destination" : "https://docs.google.com/document/d/1bH-W95mDOI6qnKWQXbvU2Uqy_dQM9HZiMHTassBZjfk/edit?usp=sharing",
+        "type" : 301
+      }],
     "public": "public",
     "ignore": [
       "firebase.json"
