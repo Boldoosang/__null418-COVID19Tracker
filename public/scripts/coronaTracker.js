@@ -62,9 +62,6 @@ async function getCoronaData(stats){
         //Converts/Parses the file to JSON.
         results = await response.json();
 
-        //To be used to edit dropdown list
-        console.log(results);
-
         //Fetches the results remote file from the stats url.
         response = await fetch(countryList);
         //Converts/Parses the file to JSON.
