@@ -74,6 +74,9 @@ async function getCoronaData(stats){
 
         //Notifies the user that the data was fetched without error.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #00d123;"><b>Data fetched!</b></p>`
+
+        //Makes the submit button clickable.
+        document.querySelector("#coronaSubmit-btn").removeAttribute("disabled");
     } catch(error) {
         //If an error has occurred, hide the tracker.
         document.querySelector(".coronaTracker").style.display = "none";
@@ -96,7 +99,7 @@ function processSelection(results, userSelection){
         updateGraph();
         //Inform the user that the data is ready to be viewed.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #99E689;"><b>The result of the query is shown below!</b></p><br>
-        <p style="color: #FFBE33; font-size: 0.9em; text-align: left; margin: 0 20px;">*On lower bandwidth connections, it may be necessary to hit the submit button again if the data has not completely loaded*</p><hr class="segmentedGraphs">`;
+        <hr class="segmentedGraphs">`;
     } catch(error) {
         //If the country was not in the results list, hide the tracker.
         document.querySelector(".coronaTracker").style.display = "none";
@@ -176,7 +179,7 @@ function drawTable(results, userSelection){
 
     //Gets the table title element and prints the title of the table.
     let tableTitle = document.querySelector(".tableTitle");
-    tableTitle.innerHTML = `<hr class="segmentedGraphs"><h2>DATA FOR ${userSelection}</h2>`;
+    tableTitle.innerHTML = `<h2>DATA FOR ${userSelection}</h2>`;
 
     //Prints the headers to the table div.
     cTableElement.innerHTML =
@@ -460,7 +463,7 @@ graphTitle.innerHTML = `<h2>COVID-19 REGION LINE GRAPH</h2>`;
 
 //Selects the chart title element and assigns the title to it.
 let chartTitle = document.querySelector(".chartTitle");
-chartTitle.innerHTML = `<hr class="segmentedGraphs"><h2>COVID-19 REGION PIE CHART</h2>`;
+chartTitle.innerHTML = `<h2>COVID-19 REGION PIE CHART</h2>`;
 
 //Draws the region map with the data in formattedData heatmap.
 function drawRegionsMap() {
@@ -468,7 +471,7 @@ function drawRegionsMap() {
     try {
         //Selects the map title element and prints the title of the map.
         let mapTitle = document.querySelector(".mapTitle");
-        mapTitle.innerHTML = `<hr class="segmentedGraphs"><h2>COVID-19 HEATMAP:<br> ${userSelection}</h2>`;
+        mapTitle.innerHTML = `<h2>COVID-19 HEATMAP:<br> ${userSelection}</h2>`;
 
         //Converts the heatmap data to a data table.
         data = google.visualization.arrayToDataTable(data);

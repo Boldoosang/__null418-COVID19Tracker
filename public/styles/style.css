@@ -69,8 +69,12 @@ main {
     margin-top: 10px;
 }
 
-.coronaGraph, .coronaChart, .coronaMapRegion, .coronaTableCountry{
-    box-shadow: 0 4px 12px 0 black;
+.visualizerData {
+    box-shadow: 0px 3px 10px black;
+}
+
+.visualizerData h2 {
+    text-shadow: 3px 3px 10px black;
 }
 
 .branding {

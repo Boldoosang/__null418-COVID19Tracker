@@ -207,28 +207,36 @@
         <option value="Zimbabwe">Zimbabwe</option>
   </select>
   <br>
-  <input id="coronaSubmit-btn" type="button" value="Submit" onclick="getUserSelection()">
+  <input id="coronaSubmit-btn" type="button" value="Submit" onclick="getUserSelection()" disabled>
     </div>
     
     <div class="outcome">
         <p style="text-align: center; color: #d69200;"><b>Please wait, data is being fetched...</b></p>
     </div>
     <section class="coronaTracker">
-        <div class="graphTitle"></div>
-        <section class="coronaGraph">
-            <canvas id="coronaLineGraph"></canvas>
-        </section>
+        <div class="visualizerData">
+            <div class="graphTitle"></div>
+            <section class="coronaGraph">
+                <canvas id="coronaLineGraph"></canvas>
+            </section>
+        </div>
 
-        <div class="chartTitle"></div>
-        <section class="coronaChart">
-            <canvas id="coronaPieChart"></canvas>
-        </section>
+        <div class="visualizerData">
+            <div class="chartTitle"></div>
+            <section class="coronaChart">
+                <canvas id="coronaPieChart"></canvas>
+            </section>
+        </div>
 
-        <div class="mapTitle"></div>
-        <section class="coronaMapRegion" style="width: 100%; margin-top: 20px; margin-bottom: 50px;"></section>
+        <div class="visualizerData">
+            <div class="mapTitle"></div>
+            <section class="coronaMapRegion" style="width: 100%; margin-top: 20px; margin-bottom: 50px;"></section>
+        </div>
 
-        <div class="tableTitle"></div>
-        <section class="coronaTableCountry"></section>
+        <div class="visualizerData">
+            <div class="tableTitle"></div>
+            <section class="coronaTableCountry"></section>
+        </div>
 
     </section>
     <script src="/scripts/resizeScript.js"></script>
