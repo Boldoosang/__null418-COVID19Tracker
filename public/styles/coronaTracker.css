@@ -172,6 +172,10 @@ hr{
     border: 2px white solid;
 }
 
+#mobilePinch {
+    display: none;
+}
+
 @media only screen and (max-width : 1000px){
     .coronaTracker h2 {
         font-size: 0.7em;
@@ -195,5 +199,9 @@ hr{
     .coronaTableCountry hr{
         width: 1000px;
         overflow-x: visible;
+    }
+
+    #mobilePinch {
+        display: block;
     }
 }

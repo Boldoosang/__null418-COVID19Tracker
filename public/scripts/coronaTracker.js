@@ -99,7 +99,7 @@ function processSelection(results, userSelection){
         updateGraph();
         //Inform the user that the data is ready to be viewed.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #99E689;"><b>The result of the query is shown below!</b></p><br>
-        <hr class="segmentedGraphs">`;
+        <p id="mobilePinch" style="text-align: center; color: #F6AB6D;"><b >Mobile web scalability enabled! Pinch to zoom.</b></p><hr class="segmentedGraphs">`;
     } catch(error) {
         //If the country was not in the results list, hide the tracker.
         document.querySelector(".coronaTracker").style.display = "none";
