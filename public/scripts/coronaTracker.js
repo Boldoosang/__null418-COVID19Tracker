@@ -327,35 +327,28 @@ let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d'
 let mapRegion = document.querySelector('.coronaMapRegion');
 mapRegion.style.width = "100%";
 
-
 //Adjusts the size of the canvas based on device client.
 let windowWidth = window.matchMedia("(min-width: 1000px)");
 
-if(windowWidth.matches){
-    coronaGraphContext.canvas.height = document.documentElement.clientHeight/6;
-    coronaPieContext.canvas.height = document.documentElement.clientHeight/6;
-    mapRegion.style.height = document.documentElement.clientHeight/6;
-} else {
-    coronaGraphContext.canvas.height = document.documentElement.clientHeight/3;
-    coronaPieContext.canvas.height = document.documentElement.clientHeight/3;
-    mapRegion.style.height = document.documentElement.clientHeight/3;
-}
 
-document.addEventListener("resize", () => {
-    updateGraph();
+//Uses javascript media queries to adjust size of graphs
+function responsiveGraph(){
     windowWidth = window.matchMedia("(min-width: 1000px)");
-
+    updateGraph();
     if(windowWidth.matches){
-        coronaGraphContext.canvas.height = document.documentElement.clientHeight/6;
-        coronaPieContext.canvas.height = document.documentElement.clientHeight/6;
-        mapRegion.style.height = document.documentElement.clientHeight/6;
+        coronaGraphContext.canvas.height = document.documentElement.clientHeight/8;
+        coronaPieContext.canvas.height = document.documentElement.clientHeight/8;
+        mapRegion.style.height = document.documentElement.clientHeight/5;
     } else {
         coronaGraphContext.canvas.height = document.documentElement.clientHeight/3;
         coronaPieContext.canvas.height = document.documentElement.clientHeight/3;
         mapRegion.style.height = document.documentElement.clientHeight/3;
     }
-    
-});
+    console.log("Yes");
+}
+
+
+parent.addEventListener("resize", responsiveGraph);
 
 
 
