@@ -334,7 +334,7 @@ let windowWidth = window.matchMedia("(min-width: 1000px)");
 //Uses javascript media queries to adjust size of graphs
 function responsiveGraph(){
     windowWidth = window.matchMedia("(min-width: 1000px)");
-    updateGraph();
+    
     if(windowWidth.matches){
         coronaGraphContext.canvas.height = document.documentElement.clientHeight/8;
         coronaPieContext.canvas.height = document.documentElement.clientHeight/8;
@@ -344,6 +344,7 @@ function responsiveGraph(){
         coronaPieContext.canvas.height = document.documentElement.clientHeight/3;
         mapRegion.style.height = document.documentElement.clientHeight/3;
     }
+    updateGraph();
     console.log("Yes");
 }
 
