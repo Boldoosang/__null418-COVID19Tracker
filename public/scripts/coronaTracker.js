@@ -8,7 +8,6 @@ Made 95% from scratch apart from APIs.
 //The region map is redrawn each time the user resizes the page.
 window.addEventListener("resize", drawRegionsMap);
 
-
 //Global Variable declaration and initialization.
 //Stores the endpoint for which all of the data for the application will be used.
 let stats = "https://pomber.github.io/covid19/timeseries.json";
@@ -322,14 +321,43 @@ function writeCountryData(n, cCode){
 
 }
 
-//Gets the Line Graph canvas.
+//Sets the graphing regions.
 let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('2d');
+let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d');
+let mapRegion = document.querySelector('.coronaMapRegion');
+mapRegion.style.width = "100%";
+
 
 //Adjusts the size of the canvas based on device client.
-//coronaGraphContext.canvas.width = document.documentElement.clientWidth;
-let parentHeight = parent.document.body.clientHeight;
-console.log(parentHeight);
-coronaGraphContext.canvas.height = parentHeight;
+let windowWidth = window.matchMedia("(min-width: 1000px)");
+
+if(windowWidth.matches){
+    coronaGraphContext.canvas.height = document.documentElement.clientHeight/6;
+    coronaPieContext.canvas.height = document.documentElement.clientHeight/6;
+    mapRegion.style.height = document.documentElement.clientHeight/6;
+} else {
+    coronaGraphContext.canvas.height = document.documentElement.clientHeight/3;
+    coronaPieContext.canvas.height = document.documentElement.clientHeight/3;
+    mapRegion.style.height = document.documentElement.clientHeight/3;
+}
+
+document.addEventListener("resize", () => {
+    updateGraph();
+    windowWidth = window.matchMedia("(min-width: 1000px)");
+
+    if(windowWidth.matches){
+        coronaGraphContext.canvas.height = document.documentElement.clientHeight/6;
+        coronaPieContext.canvas.height = document.documentElement.clientHeight/6;
+        mapRegion.style.height = document.documentElement.clientHeight/6;
+    } else {
+        coronaGraphContext.canvas.height = document.documentElement.clientHeight/3;
+        coronaPieContext.canvas.height = document.documentElement.clientHeight/3;
+        mapRegion.style.height = document.documentElement.clientHeight/3;
+    }
+    
+});
+
+
 
 //Generates the corona line graph with formatted data.
 let coronaGraph = new Chart(coronaGraphContext, {
@@ -406,12 +434,6 @@ let coronaGraph = new Chart(coronaGraphContext, {
     }
 });
 
-//Gets the Pie Chart canvas.
-let coronaPieContext = document.querySelector('#coronaPieChart').getContext('2d');
-
-//Adjusts the size of the canvas based on device client.
-//coronaPieContext.canvas.width = document.documentElement.clientWidth;
-coronaPieContext.canvas.height = document.documentElement.clientHeight/4;
 
 //Generates the corona pie chart with formatted data.
 let coronaPie = new Chart(coronaPieContext, {
@@ -495,10 +517,6 @@ function drawRegionsMap() {
 
     //Creates a new object chart for coronaMapRegion.
     let chart = new google.visualization.GeoChart(document.querySelector('.coronaMapRegion'));
-
-    //Sets the area of the graph.
-    document.querySelector('.coronaMapRegion').style.width = "100%";
-    document.querySelector('.coronaMapRegion').style.height = "600px";
 
     //Draws the map with the data and options on the chart object.
     chart.draw(data, options);
