@@ -327,7 +327,9 @@ let coronaGraphContext = document.querySelector('#coronaLineGraph').getContext('
 
 //Adjusts the size of the canvas based on device client.
 //coronaGraphContext.canvas.width = document.documentElement.clientWidth;
-coronaGraphContext.canvas.height = document.documentElement.clientHeight/3;
+let parentHeight = parent.document.body.clientHeight;
+console.log(parentHeight);
+coronaGraphContext.canvas.height = parentHeight;
 
 //Generates the corona line graph with formatted data.
 let coronaGraph = new Chart(coronaGraphContext, {
