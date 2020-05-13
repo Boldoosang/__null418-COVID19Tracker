@@ -35,8 +35,8 @@ let coronaTrackerArea = document.querySelector(".coronaTracker");
 //Declares the format in which dates will be stored for the application.
 let globalDateFormat = {day: '2-digit', month: 'short', year: 'numeric'};
 
-//Once the javascript file has loaded, draw the map.
-load = getCoronaData(stats);
+//Get the coronavirus data from the data source.
+getCoronaData(stats);
 
 
 //Triggered when the user hits the submit button and begins the loading of the data with the user's selection.
@@ -76,9 +76,10 @@ async function getCoronaData(stats){
 
         //Makes the submit button clickable.
         document.querySelector("#coronaSubmit-btn").removeAttribute("disabled");
+        
     } catch(error) {
         //If an error has occurred, hide the tracker.
-        document.querySelector(".coronaTracker").style.display = "none";
+        document.querySelector(".coronaTracker").style.visibility = "hidden";
         //Notifies the user that the data was unable to be fetched.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #FFA3A3;"><b>Unable to fetch data from endpoint!</b></p>`
         //Outputs the error to the console.
@@ -101,7 +102,7 @@ function processSelection(results, userSelection){
         <p id="mobilePinch" style="text-align: center; color: #F6AB6D;"><b >Mobile web scalability enabled! Pinch to zoom.</b></p><hr class="segmentedGraphs">`;
     } catch(error) {
         //If the country was not in the results list, hide the tracker.
-        document.querySelector(".coronaTracker").style.display = "none";
+        document.querySelector(".coronaTracker").style.visibility = "hidden";
         //Notifies the user that no data was avaialable for the country.
         outcomeArea.innerHTML = `<p style="text-align: center; color: #FFA3A3;"><b>No data on selected country.</b></p>`
         //Outputs the error to the console.
@@ -330,27 +331,9 @@ mapRegion.style.width = "100%";
 //Adjusts the size of the canvas based on device client.
 let windowWidth = window.matchMedia("(min-width: 1000px)");
 
-
-//Uses javascript media queries to adjust size of graphs
-function responsiveGraph(){
-    windowWidth = window.matchMedia("(min-width: 1000px)");
-    
-    if(windowWidth.matches){
-        coronaGraphContext.canvas.height = document.documentElement.clientHeight/8;
-        coronaPieContext.canvas.height = document.documentElement.clientHeight/8;
-        mapRegion.style.height = document.documentElement.clientHeight/5;
-    } else {
-        coronaGraphContext.canvas.height = document.documentElement.clientHeight/3;
-        coronaPieContext.canvas.height = document.documentElement.clientHeight/3;
-        mapRegion.style.height = document.documentElement.clientHeight/3;
-    }
-    updateGraph();
-    console.log("Yes");
-}
-
-
-parent.addEventListener("resize", responsiveGraph);
-
+coronaGraphContext.canvas.height = document.documentElement.clientHeight/1.5;
+coronaPieContext.canvas.height = document.documentElement.clientHeight/1.5;
+mapRegion.style.height = document.documentElement.clientHeight/3;
 
 
 //Generates the corona line graph with formatted data.
@@ -379,6 +362,8 @@ let coronaGraph = new Chart(coronaGraphContext, {
         }
     ]},
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
         backgroundColor: 'rgba(255,255,255,0.5)',
         layout: {
             padding: {
@@ -440,9 +425,13 @@ let coronaPie = new Chart(coronaPieContext, {
         labels: ["Confirmed Cases", "Deaths", "Recovered"],
     },
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
         layout: {
             padding: {
-                bottom: 25
+                bottom: 25,
+                left: 25,
+                right: 25
             }
         },
         legend: {
@@ -456,16 +445,18 @@ let coronaPie = new Chart(coronaPieContext, {
 });
 
 //UPDATES GRAPHS AND CHARTS
-function updateGraph(){
+async function updateGraph(){
     //Sets the result area to visible.
-    document.querySelector('.coronaTracker').style.display = "block";
+    document.querySelector('.coronaTracker').style.visibility = "visible";
+
     //Draws the table to its corresponding div.
     drawTable(results, userSelection);
     //Updates the corona line graph and corona pie chart.
-    coronaPie.update();
-    coronaGraph.update();
+    await coronaPie.update();
+    await coronaGraph.update();
     //Draws the map to the screen.
-    drawRegionsMap();
+    await drawRegionsMap();
+
 }
 
 
@@ -504,6 +495,7 @@ function drawRegionsMap() {
         region: selectedCountryCode,
         //jQuery query selector used.
         width: $('#coronaMapRegion').width(),
+        height: 500,
         colorAxis: {colors: ["green","yellow","yellow","red","red","red","red","red","red","red","red","red","red",]},
         displayMode: "region",
         backgroundColor: "#1f2833"
