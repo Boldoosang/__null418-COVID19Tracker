@@ -1,6 +1,7 @@
 # __null418 - Coronavirus Tracker
 Welcome to our INFO 1601 Final Project! This project aims to provide a single page, dynamically loaded web applications for users who wish to obtain the latest information with regards to the Coronavirus. 
 
+
 ## FEATURES
 The following is a list of features that are implemented into the developed web application:
 * Up to date coronavirus statistics
@@ -12,6 +13,7 @@ The following is a list of features that are implemented into the developed web 
 * User friendly design
 * Single page design
 
+
 ## RESOURCES USED
 * [Materialize](https://materializecss.com/) - Styling and mobile based navigation
 * [Chart.js](https://www.chartjs.org/) - Generating graphs and pie charts
@@ -19,8 +21,15 @@ The following is a list of features that are implemented into the developed web 
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial) - Heatmap visualizer
 * [COVID-19 data](https://github.com/pomber/covid19) - Coronavirus data endpoint
 
+
 ## CONTRIBUTORS
 * [Boldoosang](https://github.com/Boldoosang/)
 * [TheHuman](https://github.com/tevonthatcher)
 * [BrandonJB1](https://github.com/BrandonBharath)
 * [Eurig](https://github.com/816019911)
+
+
+## PROJECT DELIVERABLES
+* [Deployed Website](https://null418.justinbaldeo.com/)
+* [Project Report](https://docs.google.com/document/d/1bH-W95mDOI6qnKWQXbvU2Uqy_dQM9HZiMHTassBZjfk/edit?usp=sharing)
+* [Presentation Video](https://null418.justinbaldeo.com/demo.html)
